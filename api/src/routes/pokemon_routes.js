@@ -9,8 +9,8 @@ router.get("/", async (req, res) => {
     const { name } = req.query;
     const pokemons = await allPokeInfo();
     if (name) {
-      const pokesByName = pokemons?.filter((p) =>
-        p.name.toLowerCase().includes(name.toLowerCase())
+      const pokesByName = pokemons?.filter(
+        (p) => p.name.toLowerCase() === name.toLowerCase()
       );
       pokesByName.length > 0
         ? res.status(200).json(pokesByName)
@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
       types,
     } = req.body;
     const newPokemon = await Pokemon.create({
-      name,
+      name: name.toLowerCase(),
       hp,
       attack,
       defense,

@@ -1,7 +1,17 @@
-import { GET_POKEMONS } from ".././actions/action_types.js";
+import {
+  ALPHABETICAL_ORDER,
+  EXISTING_CREATED_FILTER,
+  FILTER_BY_TYPE,
+  GET_POKEMONS,
+  GET_POKEMON_BY_NAME,
+  GET_TYPES,
+  ORDER_BY_ATTACK,
+} from ".././actions/action_types.js";
 
 const initialState = {
+  allPokemons: [],
   pokemons: [],
+  types: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -10,7 +20,103 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: action.payload,
+        allPokemons: action.payload,
       };
+    case GET_TYPES:
+      return {
+        ...state,
+        types: action.payload,
+      };
+    case FILTER_BY_TYPE:
+      const allPokemons = state.allPokemons;
+      const filteredByType =
+        action.payload === "all"
+          ? allPokemons
+          : allPokemons?.filter((p) =>
+              p.types.map((t) => t.name).includes(action.payload)
+            );
+      return {
+        ...state,
+        pokemons: filteredByType,
+      };
+    case EXISTING_CREATED_FILTER:
+      const allPokes = state.allPokemons;
+      const pokeFilter =
+        action.payload === "created"
+          ? allPokes?.filter((p) => p.createdInDb)
+          : allPokes?.filter((p) => !p.createdInDb);
+      return {
+        ...state,
+        pokemons: action.payload === "all" ? allPokes : pokeFilter,
+      };
+    case ALPHABETICAL_ORDER:
+      const pokes = state.pokemons;
+      let pokeOrder =
+        action.payload === "asc"
+          ? pokes.sort(function (a, b) {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+              return 0;
+            })
+          : pokes.sort(function (a, b) {
+              if (a.name > b.name) {
+                return -1;
+              }
+              if (b.name > a.name) {
+                return 1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        pokemons: pokeOrder,
+      };
+    case ORDER_BY_ATTACK:
+      const thePokemons = state.pokemons;
+      let attackOrder =
+        action.payload === "powerfull"
+          ? thePokemons.sort((a, z) => {
+              if (a.attack > z.attack) {
+                return -1;
+              }
+              if (z.attack > a.attack) {
+                return 1;
+              }
+              return 0;
+            })
+          : thePokemons.sort((a, z) => {
+              if (a.attack > z.attack) {
+                return 1;
+              }
+              if (z.attack > a.attack) {
+                return -1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        pokemons: attackOrder,
+      };
+
+    case GET_POKEMON_BY_NAME:
+      let fullPoke = state.allPokemons;
+      let onePoke = fullPoke?.filter((p) => p.name === action.payload[0].name);
+      return {
+        ...state,
+        pokemons:
+          onePoke.length > 0
+            ? onePoke
+            : fullPoke.concat(
+                alert(
+                  `There is not a pokemon with that name. Let me show you all the pokemons`
+                )
+              ),
+      };
+
     default:
       return { ...state };
   }

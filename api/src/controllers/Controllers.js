@@ -4,16 +4,13 @@ const { Pokemon, Type } = require("../db.js");
 const pokeApiInfo = async () => {
   try {
     let allPokeInfo = [];
-    const urlPoke1 = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon?limit=12"
-    );
+    const urlPoke1 = await axios.get("https://pokeapi.co/api/v2/pokemon");
     let urlPromises1 = urlPoke1.data.results?.map((p) => axios.get(p.url));
-    const urlPoke2 = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon?offset=12&limit=28"
-    );
-    let urlPromises12 = urlPoke2.data.results?.map((p) => axios.get(p.url));
 
-    let allUrlPromises = urlPromises1.concat(urlPromises12);
+    const urlPoke2 = await axios.get(urlPoke1.data.next);
+    let urlPromises2 = urlPoke2.data.results?.map((p) => axios.get(p.url));
+
+    let allUrlPromises = urlPromises1.concat(urlPromises2);
 
     await axios.all(allUrlPromises).then((url) => {
       url?.map((p) => {
