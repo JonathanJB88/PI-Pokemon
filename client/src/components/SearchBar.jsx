@@ -14,8 +14,10 @@ const SearchBar = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(pokemonByName(name));
-    setName("");
+    if (name !== "") {
+      dispatch(pokemonByName(name));
+      setName("");
+    }
   };
 
   return (

@@ -67,14 +67,15 @@ router.post("/", async (req, res) => {
       image,
       createdInDb,
     });
-    const typesSent = types.split(", ");
+    // const typesSent = types.split(", ");
     const dbTypes = await Type.findAll({
-      where: {
-        name: typesSent.map((t) => t),
-      },
+      where: { name: types },
+      // {
+      //   name: typesSent.map((t) => t),
+      // },
     });
-    if (!name) return res.status(404).send("The pokemon name must be provided");
     newPokemon.addType(dbTypes);
+    if (!name) return res.status(404).send("The pokemon name must be provided");
     res.status(200).send("The pokemon has been created");
   } catch (error) {
     console.log({ error: error.message });

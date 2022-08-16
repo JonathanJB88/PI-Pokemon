@@ -25,11 +25,11 @@ module.exports = (sequelize) => {
       weight: { type: DataTypes.INTEGER },
       image: {
         type: DataTypes.STRING,
-        defaultValue: "https://media.giphy.com/media/amrNGnZUeWhZC/giphy.gif",
       },
       createdInDb: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        allowNull: false,
+        defaultValue: true,
       },
     },
     { timestamps: false }

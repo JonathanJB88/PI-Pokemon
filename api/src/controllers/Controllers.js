@@ -38,11 +38,12 @@ const pokeApiInfo = async () => {
 const pokeDbInfo = async () => {
   try {
     const pokemons = await Pokemon.findAll({
-      include: {
-        model: Type,
-        attributes: ["name"],
-        through: { attributes: [] },
-      },
+      include: Type,
+      // {
+      //   model: Type,
+      //   attributes: ["name"],
+      //   through: { attributes: [] },
+      // },
     });
     return pokemons;
   } catch (error) {

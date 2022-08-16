@@ -39,8 +39,23 @@ export const pokemonByName = (name) => {
       });
     } catch (error) {
       console.log({ error: error.message });
+      return alert("There is not a pokemon with that name");
     }
   };
+};
+
+export const createPokemon = (payload) => {
+  try {
+    return async (dispatch) => {
+      var response = await axios.post(
+        "http://localhost:3001/pokemons",
+        payload
+      );
+      return response;
+    };
+  } catch (error) {
+    console.log({ error: error.message });
+  }
 };
 
 export const filterByType = (payload) => {

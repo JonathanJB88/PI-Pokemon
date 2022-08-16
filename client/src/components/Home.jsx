@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -68,7 +68,7 @@ const Home = () => {
   return (
     <div>
       <h1>Pokemon App</h1>
-      <Link to={"/pokemons"}>
+      <Link to={"/pokeCreate"}>
         <button>Create Pokemon</button>
       </Link>
       <button
@@ -79,16 +79,16 @@ const Home = () => {
         Load all Pokemons
       </button>
       <div>
-        <select onChange={(e) => handleAbcOrder(e)}>
-          <option disabled selected>
+        <select defaultValue="title" onChange={(e) => handleAbcOrder(e)}>
+          <option value="title" disabled>
             Order by: alphabet
           </option>
           <option value="asc">A to Z</option>
           <option value="desc">Z to A</option>
         </select>
-        <select onChange={(e) => handleTypeOptions(e)}>
-          <option disabled selected>
-            Order by: Type
+        <select defaultValue="title" onChange={(e) => handleTypeOptions(e)}>
+          <option value="title" disabled>
+            Filter by: Type
           </option>
           <option value="all">All</option>
           {allTypes?.map((t) => {
@@ -99,15 +99,15 @@ const Home = () => {
             );
           })}
         </select>
-        <select onChange={(e) => handleAttackOrder(e)}>
-          <option disabled selected>
+        <select defaultValue="title" onChange={(e) => handleAttackOrder(e)}>
+          <option value="title" disabled>
             Order by: Attack
           </option>
           <option value="powerfull">Powerfull</option>
           <option value="weak">Weak</option>
         </select>
-        <select onChange={(e) => handleCreatedOptions(e)}>
-          <option disabled selected>
+        <select defaultValue="title" onChange={(e) => handleCreatedOptions(e)}>
+          <option value="title" disabled>
             Filter by: Existing or Created
           </option>
           <option value="all">All</option>
@@ -122,9 +122,14 @@ const Home = () => {
         <SearchBar />
         {actualPokes?.map((p) => {
           return (
-            <fragment>
-              <PokeCard id={p.id} img={p.image} name={p.name} types={p.types} />
-            </fragment>
+            <Fragment key={p.id}>
+              <PokeCard
+                id={p.id}
+                image={p.image}
+                name={p.name}
+                types={p.types}
+              />
+            </Fragment>
           );
         })}
       </div>

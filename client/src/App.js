@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
+import PokeCreate from "./components/PokeCreate";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Switch>
           <Route exact path={"/"} component={LandingPage} />
           <Route path={"/home"} component={Home} />
+          <Route path={"/pokeCreate"} component={PokeCreate} />
         </Switch>
       </div>
     </BrowserRouter>

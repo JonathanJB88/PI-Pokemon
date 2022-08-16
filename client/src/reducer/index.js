@@ -1,5 +1,6 @@
 import {
   ALPHABETICAL_ORDER,
+  CREATE_POKEMON,
   EXISTING_CREATED_FILTER,
   FILTER_BY_TYPE,
   GET_POKEMONS,
@@ -43,8 +44,8 @@ const rootReducer = (state = initialState, action) => {
       const allPokes = state.allPokemons;
       const pokeFilter =
         action.payload === "created"
-          ? allPokes?.filter((p) => p.createdInDb)
-          : allPokes?.filter((p) => !p.createdInDb);
+          ? allPokes?.filter((p) => p.createdInDb === true)
+          : allPokes?.filter((p) => p.createdInDb !== true);
       return {
         ...state,
         pokemons: action.payload === "all" ? allPokes : pokeFilter,
@@ -101,22 +102,15 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemons: attackOrder,
       };
-
     case GET_POKEMON_BY_NAME:
       let fullPoke = state.allPokemons;
       let onePoke = fullPoke?.filter((p) => p.name === action.payload[0].name);
       return {
         ...state,
-        pokemons:
-          onePoke.length > 0
-            ? onePoke
-            : fullPoke.concat(
-                alert(
-                  `There is not a pokemon with that name. Let me show you all the pokemons`
-                )
-              ),
+        pokemons: onePoke,
       };
-
+    case CREATE_POKEMON:
+      return { ...state };
     default:
       return { ...state };
   }
