@@ -25,6 +25,8 @@ module.exports = (sequelize) => {
       weight: { type: DataTypes.INTEGER },
       image: {
         type: DataTypes.STRING,
+        defaultValue:
+          "https://www.seekpng.com/png/full/125-1251017_can-you-become-a-pokmon-master-like-me.png",
       },
       createdInDb: {
         type: DataTypes.BOOLEAN,

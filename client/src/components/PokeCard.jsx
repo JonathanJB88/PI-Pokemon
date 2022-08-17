@@ -5,7 +5,7 @@ const PokeCard = ({ id, image, name, types }) => {
   return (
     <div>
       <h3>Pokemon: {name}</h3>
-      <Link to={`/pokemons/${id}`}>
+      <Link to={`/pokeDetails/${id}`}>
         <img
           src={image}
           alt="PokeImage not found"
@@ -13,7 +13,7 @@ const PokeCard = ({ id, image, name, types }) => {
           height="250px"
         />
       </Link>
-      <h4>Types: {types.map((pt) => "- " + pt.name + " ")}</h4>
+      <h4>Types: {types.map((t) => " " + t.name + " ")}</h4>
       <br />
     </div>
   );

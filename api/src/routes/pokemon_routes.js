@@ -64,7 +64,9 @@ router.post("/", async (req, res) => {
       speed,
       height,
       weight,
-      image,
+      image: image
+        ? image
+        : "https://www.seekpng.com/png/full/125-1251017_can-you-become-a-pokmon-master-like-me.png",
       createdInDb,
     });
     // const typesSent = types.split(", ");

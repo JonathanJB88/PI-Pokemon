@@ -5,6 +5,7 @@ import {
   FILTER_BY_TYPE,
   GET_POKEMONS,
   GET_POKEMON_BY_NAME,
+  GET_POKE_DETAILS,
   GET_TYPES,
   ORDER_BY_ATTACK,
 } from ".././actions/action_types.js";
@@ -13,6 +14,7 @@ const initialState = {
   allPokemons: [],
   pokemons: [],
   types: [],
+  pokeDetails: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -108,6 +110,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: onePoke,
+      };
+    case GET_POKE_DETAILS:
+      return {
+        ...state,
+        pokeDetails: action.payload,
       };
     case CREATE_POKEMON:
       return { ...state };

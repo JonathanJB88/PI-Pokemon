@@ -5,27 +5,36 @@ import {
   FILTER_BY_TYPE,
   GET_POKEMONS,
   GET_POKEMON_BY_NAME,
+  GET_POKE_DETAILS,
   GET_TYPES,
   ORDER_BY_ATTACK,
 } from "./action_types.js";
 
 export const getPokemons = () => {
   return async (dispatch) => {
-    var json = await axios.get("http://localhost:3001/pokemons");
-    return dispatch({
-      type: GET_POKEMONS,
-      payload: json.data,
-    });
+    try {
+      var json = await axios.get("http://localhost:3001/pokemons");
+      return dispatch({
+        type: GET_POKEMONS,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log({ error: error.message });
+    }
   };
 };
 
 export const getTypes = () => {
   return async (dispatch) => {
-    var json = await axios.get("http://localhost:3001/types");
-    return dispatch({
-      type: GET_TYPES,
-      payload: json.data,
-    });
+    try {
+      var json = await axios.get("http://localhost:3001/types");
+      return dispatch({
+        type: GET_TYPES,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log({ error: error.message });
+    }
   };
 };
 
@@ -45,17 +54,31 @@ export const pokemonByName = (name) => {
 };
 
 export const createPokemon = (payload) => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       var response = await axios.post(
         "http://localhost:3001/pokemons",
         payload
       );
       return response;
-    };
-  } catch (error) {
-    console.log({ error: error.message });
-  }
+    } catch (error) {
+      console.log({ error: error.message });
+    }
+  };
+};
+
+export const getPokeDetails = (id) => {
+  return async (dispatch) => {
+    try {
+      var json = await axios.get(`http://localhost:3001/pokemons/${id}`);
+      return dispatch({
+        type: GET_POKE_DETAILS,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log({ error: error.message });
+    }
+  };
 };
 
 export const filterByType = (payload) => {

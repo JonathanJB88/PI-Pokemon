@@ -16,7 +16,7 @@ const pokeApiInfo = async () => {
       url?.map((p) => {
         allPokeInfo.push({
           id: p.data.id,
-          name: p.data.name,
+          name: p.data.name.charAt(0).toUpperCase() + p.data.name.slice(1),
           hp: p.data.stats.find((s) => s.stat.name === "hp").base_stat,
           attack: p.data.stats.find((s) => s.stat.name === "attack").base_stat,
           defense: p.data.stats.find((s) => s.stat.name === "defense")
@@ -24,7 +24,13 @@ const pokeApiInfo = async () => {
           speed: p.data.stats.find((s) => s.stat.name === "speed").base_stat,
           height: p.data.height,
           weight: p.data.weight,
-          types: p.data.types.map((t) => (t = { name: t.type.name })),
+          types: p.data.types.map(
+            (t) =>
+              (t = {
+                name:
+                  t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1),
+              })
+          ),
           image: p.data.sprites.other["official-artwork"].front_default,
         });
       });

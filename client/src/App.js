@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import PokeCreate from "./components/PokeCreate";
+import PokeDetails from "./components/PokeDetails";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route exact path={"/"} component={LandingPage} />
           <Route path={"/home"} component={Home} />
           <Route path={"/pokeCreate"} component={PokeCreate} />
+          <Route path={"/pokeDetails/:id"} component={PokeDetails} />
         </Switch>
       </div>
     </BrowserRouter>
