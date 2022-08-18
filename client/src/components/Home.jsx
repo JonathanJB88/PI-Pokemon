@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import PokeCard from "./PokeCard";
 import Paging from "./Paging.jsx";
 import SearchBar from "./SearchBar.jsx";
+import pokeLoading from "./Gif Loading/PokeLoading.gif";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -120,18 +121,26 @@ const Home = () => {
           paging={paging}
         />
         <SearchBar />
-        {actualPokes?.map((p) => {
-          return (
-            <Fragment key={p.id}>
-              <PokeCard
-                id={p.id}
-                image={p.image}
-                name={p.name}
-                types={p.types}
-              />
-            </Fragment>
-          );
-        })}
+        {actualPokes.length > 0 ? (
+          actualPokes.map((p) => {
+            return (
+              <Fragment key={p.id}>
+                <PokeCard
+                  id={p.id}
+                  image={p.image}
+                  name={p.name}
+                  types={p.types}
+                />
+              </Fragment>
+            );
+          })
+        ) : (
+          <div>
+            <br />
+            <img src={pokeLoading} alt="Pokeimage not found" />
+            <h2> Loading Pokemons... </h2>
+          </div>
+        )}
       </div>
     </div>
   );

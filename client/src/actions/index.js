@@ -48,7 +48,9 @@ export const pokemonByName = (name) => {
       });
     } catch (error) {
       console.log({ error: error.message });
-      return alert("There is not a pokemon with that name");
+      return alert(
+        "There is not a pokemon with that name, try again with a new one"
+      );
     }
   };
 };

@@ -39,42 +39,42 @@ const PokeCreate = () => {
       errors.image =
         "Please, insert a jpg, jpeg, png, webp, avif, gif, svg url image of your pokemon";
     } else if (!input.hp || input.hp > 100 || input.hp < 0 || isNaN(input.hp)) {
-      errors.hp = "Please, select a valid health power number from 0 to 100";
+      errors.hp = "Please, select a valid health power number from 1 to 100";
     } else if (
       !input.attack ||
       input.attack > 100 ||
       input.attack < 0 ||
       isNaN(input.attack)
     ) {
-      errors.attack = "Please, insert a valid attack number from 0 to 100";
+      errors.attack = "Please, insert a valid attack number from 1 to 100";
     } else if (
       !input.defense ||
       input.defense > 100 ||
       input.defense < 0 ||
       isNaN(input.defense)
     ) {
-      errors.defense = "Please, insert a valid defense number from 0 to 100";
+      errors.defense = "Please, insert a valid defense number from 1 to 100";
     } else if (
       !input.speed ||
       input.speed > 100 ||
       input.speed < 0 ||
       isNaN(input.speed)
     ) {
-      errors.speed = "Please, insert a valid speed number from 0 to 100";
+      errors.speed = "Please, insert a valid speed number from 1 to 100";
     } else if (
       !input.height ||
       input.height > 100 ||
       input.height < 0 ||
       isNaN(input.height)
     ) {
-      errors.height = "Please, insert a valid height number from 0 to 100";
+      errors.height = "Please, insert a valid height number from 1 to 100";
     } else if (
       !input.weight ||
       input.weight > 100 ||
       input.weight < 0 ||
       isNaN(input.weight)
     ) {
-      errors.weight = "Please insert a valid weight number from 0 to 100";
+      errors.weight = "Please insert a valid weight number from 1 to 100";
     }
     return errors;
   };
@@ -110,27 +110,29 @@ const PokeCreate = () => {
   };
 
   const handleSelect = (e) => {
-    setInput({
-      ...input,
-      types: [...input.types, e.target.value],
-    });
-    const valErrorTypes = valSelect({
-      ...input,
-      types: [...input.types, e.target.value],
-    });
-    const valErrors = validate(input);
-    console.log("change", valErrors);
-    console.log("select", valErrorTypes);
-    if (
-      JSON.stringify(valErrorTypes) === "{}" &&
-      JSON.stringify(valErrors) === "{}"
-    ) {
-      setDisable(false);
-    } else {
-      setDisable(true);
+    if (!input.types.includes(e.target.value)) {
+      setInput({
+        ...input,
+        types: [...input.types, e.target.value],
+      });
+      const valErrorTypes = valSelect({
+        ...input,
+        types: [...input.types, e.target.value],
+      });
+      const valErrors = validate(input);
+      console.log("change", valErrors);
+      console.log("select", valErrorTypes);
+      if (
+        JSON.stringify(valErrorTypes) === "{}" &&
+        JSON.stringify(valErrors) === "{}"
+      ) {
+        setDisable(false);
+      } else {
+        setDisable(true);
+      }
+      setErrors(valErrors);
+      setErrorSelect(valErrorTypes);
     }
-    setErrors(valErrors);
-    setErrorSelect(valErrorTypes);
   };
 
   const handleDelete = (type) => {
@@ -189,7 +191,7 @@ const PokeCreate = () => {
             type="text"
             value={input.name}
             name="name"
-            placeholder="PokeName..."
+            placeholder="Type your pokemon name here..."
             onChange={(e) => handleChange(e)}
           />
           {errors.name && <span>{errors.name}</span>}
@@ -201,10 +203,10 @@ const PokeCreate = () => {
             <option value="title" disabled name="types">
               Select Types:
             </option>
-            {pokeTypes?.map((pt) => {
+            {pokeTypes?.map((t) => {
               return (
-                <option value={pt.name} key={pt.id}>
-                  {pt.name}
+                <option value={t.name} key={t.id}>
+                  {t.name}
                 </option>
               );
             })}
@@ -212,7 +214,7 @@ const PokeCreate = () => {
           {input.types?.map((t, index) => (
             <div key={index}>
               <span>{t} </span>
-              <button onClick={() => handleDelete(t)}>X</button>
+              <span onClick={() => handleDelete(t)}>X</span>
             </div>
           ))}
           {errorSelect.types && <span>{errorSelect.types}</span>}
@@ -224,7 +226,7 @@ const PokeCreate = () => {
             type="url"
             value={input.image}
             name="image"
-            placeholder="Url Image..."
+            placeholder="Url image..."
             onChange={(e) => handleChange(e)}
           />
           {errors.image && <span>{errors.image}</span>}
@@ -234,11 +236,11 @@ const PokeCreate = () => {
           <label>HP: </label>
           <input
             type="number"
+            placeholder="1 - 100"
             value={input.hp}
             name="hp"
             onChange={(e) => handleChange(e)}
           />
-          <span>{input.hp}</span>
           {errors.hp && <span>{errors.hp}</span>}
         </div>
         <br />
@@ -246,11 +248,11 @@ const PokeCreate = () => {
           <label>Attack:</label>
           <input
             type="number"
+            placeholder="1 - 100"
             value={input.attack}
             name="attack"
             onChange={(e) => handleChange(e)}
           />
-          <span>{input.attack}</span>
           {errors.attack && <span>{errors.attack}</span>}
         </div>
         <br />
@@ -258,11 +260,11 @@ const PokeCreate = () => {
           <label>Defense:</label>
           <input
             type="number"
+            placeholder="1 - 100"
             value={input.defense}
             name="defense"
             onChange={(e) => handleChange(e)}
           />
-          <span>{input.defense}</span>
           {errors.defense && <span>{errors.defense}</span>}
         </div>
         <br />
@@ -270,11 +272,11 @@ const PokeCreate = () => {
           <label>Speed:</label>
           <input
             type="number"
+            placeholder="1 - 100"
             value={input.speed}
             name="speed"
             onChange={(e) => handleChange(e)}
           />
-          <span>{input.speed}</span>
           {errors.speed && <span>{errors.speed}</span>}
         </div>
         <br />
@@ -282,11 +284,11 @@ const PokeCreate = () => {
           <label>Height:</label>
           <input
             type="number"
+            placeholder="1 - 100"
             value={input.height}
             name="height"
             onChange={(e) => handleChange(e)}
           />
-          <span>{input.height}</span>
           {errors.height && <span>{errors.height}</span>}
         </div>
         <br />
@@ -294,17 +296,15 @@ const PokeCreate = () => {
           <label>Weight:</label>
           <input
             type="number"
+            placeholder="1 - 100"
             value={input.weight}
             name="weight"
             onChange={(e) => handleChange(e)}
           />
-          <span>{input.weight}</span>
           {errors.weight && <span>{errors.weight}</span>}
         </div>
         <br />
-        <button type="submit" disabled={disabled}>
-          CREATE
-        </button>
+        <input type="submit" value={"CREATE"} disabled={disabled} />
       </form>
     </div>
   );

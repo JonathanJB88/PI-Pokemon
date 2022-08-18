@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { pokemonByName } from "../actions/index.js";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const allPokes = useSelector((state) => state.allPokemons);
 
   const handleInput = (e) => {
     e.preventDefault();
