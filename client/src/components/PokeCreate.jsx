@@ -8,7 +8,8 @@ const PokeCreate = () => {
   const history = useHistory();
   const pokeTypes = useSelector((state) => state.types);
 
-  const [errors, setErrors] = useState({ firstState: "" });
+  const [errors, setErrors] = useState({});
+  const [errorSelect, setErrorSelect] = useState({});
   const [disabled, setDisable] = useState(true);
   const [input, setInput] = useState({
     name: "",
@@ -34,8 +35,6 @@ const PokeCreate = () => {
       input.name.length < 1
     ) {
       errors.name = "Please, input a name for your pokemon";
-    } else if (input.types.length < 0 || input.types.length > 3) {
-      errors.types = "Please, select from 1 to 3 pokemon types";
     } else if (input.image.length > 0 && !validateURL(input.image)) {
       errors.image =
         "Please, insert a jpg, jpeg, png, webp, avif, gif, svg url image of your pokemon";
@@ -80,37 +79,58 @@ const PokeCreate = () => {
     return errors;
   };
 
+  const valSelect = (input) => {
+    let errorSelect = {};
+    if (input.types.length === 0 || input.types.length > 3) {
+      errorSelect.types = "Please, select from 1 to 3 pokemon types";
+    }
+    return errorSelect;
+  };
+
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch]);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
-    setErrors(
-      validate({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
-    );
-    if (errors.name !== "" && errors.image !== "") {
+    const valErrors = validate({ ...input, [e.target.name]: e.target.value });
+    const valErrorTypes = valSelect(input);
+    console.log("change", valErrors);
+    console.log("select", valErrorTypes);
+    if (
+      JSON.stringify(valErrors) === "{}" &&
+      JSON.stringify(valErrorTypes) === "{}"
+    ) {
       setDisable(false);
     } else {
       setDisable(true);
     }
+    setErrors(valErrors);
+    setErrorSelect(valErrorTypes);
   };
-  console.log(errors);
 
   const handleSelect = (e) => {
     setInput({
       ...input,
       types: [...input.types, e.target.value],
     });
-    setErrors(
-      validate({
-        ...input,
-        types: [...input.types, e.target.value],
-      })
-    );
+    const valErrorTypes = valSelect({
+      ...input,
+      types: [...input.types, e.target.value],
+    });
+    const valErrors = validate(input);
+    console.log("change", valErrors);
+    console.log("select", valErrorTypes);
+    if (
+      JSON.stringify(valErrorTypes) === "{}" &&
+      JSON.stringify(valErrors) === "{}"
+    ) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+    setErrors(valErrors);
+    setErrorSelect(valErrorTypes);
   };
 
   const handleDelete = (type) => {
@@ -118,6 +138,22 @@ const PokeCreate = () => {
       ...input,
       types: input.types?.filter((t) => t !== type),
     });
+    const valErrorTypes = valSelect({
+      ...input,
+      types: input.types?.filter((t) => t !== type),
+    });
+    const valErrors = validate(input);
+    console.log("select", valErrorTypes);
+    if (
+      JSON.stringify(valErrorTypes) === "{}" &&
+      JSON.stringify(valErrors) === "{}"
+    ) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+    setErrors(valErrors);
+    setErrorSelect(valErrorTypes);
   };
 
   const handleSubmit = (e) => {
@@ -179,7 +215,7 @@ const PokeCreate = () => {
               <button onClick={() => handleDelete(t)}>X</button>
             </div>
           ))}
-          {errors.types && <span>{errors.types}</span>}
+          {errorSelect.types && <span>{errorSelect.types}</span>}
         </div>
         <br />
         <div>
