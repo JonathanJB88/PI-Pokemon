@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./styles/LandingPage.css";
+import logo from "./PokeImages/Logo.png";
 
 const LandingPage = () => {
   return (
-    <div>
-      <h1>Welcome to my Pokemon World</h1>
-      <Link to={"/home"}>
-        <button>Let's Go</button>
-      </Link>
+    <div className="background">
+      <img className="logo" src={logo} alt="Pokeimage not found" />
+      <div className="divbutton">
+        <Link to={"/home"}>
+          <button className="button">DISCOVER</button>
+        </Link>
+      </div>
     </div>
   );
 };

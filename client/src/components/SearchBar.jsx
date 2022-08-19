@@ -1,12 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { pokemonByName } from "../actions/index.js";
 
-const SearchBar = () => {
+const SearchBar = ({ setInput, setPage }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const allPokes = useSelector((state) => state.allPokemons);
 
   const handleInput = (e) => {
     e.preventDefault();
@@ -18,6 +17,19 @@ const SearchBar = () => {
     if (name !== "") {
       dispatch(pokemonByName(name));
       setName("");
+      setInput(1);
+      setPage(1);
+    }
+  };
+  const onKeyDown = (e) => {
+    if (e.keyCode == 13) {
+      e.preventDefault();
+      if (name !== "") {
+        dispatch(pokemonByName(name));
+        setName("");
+        setInput(1);
+        setPage(1);
+      }
     }
   };
 
@@ -27,6 +39,7 @@ const SearchBar = () => {
         type="text"
         placeholder="Find pokemons..."
         value={name}
+        onKeyDown={(e) => onKeyDown(e)}
         onChange={(e) => handleInput(e)}
       />
       <button type="submit" onClick={(e) => handleClick(e)}>

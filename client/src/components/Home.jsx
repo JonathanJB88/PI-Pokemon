@@ -13,23 +13,18 @@ import { Link } from "react-router-dom";
 import PokeCard from "./PokeCard";
 import Paging from "./Paging.jsx";
 import SearchBar from "./SearchBar.jsx";
-import pokeLoading from "./Gif Loading/PokeLoading.gif";
+import pokeLoading from "./Gifs/PokeLoading.gif";
 
 const Home = () => {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
   const allTypes = useSelector((state) => state.types);
 
-  const [actualPage, setActualPage] = useState(1);
-  const [pokesOnPage, setPokesOnPage] = useState(12);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(12);
+  const max = Math.ceil(allPokemons.length / perPage);
+  const [input, setInput] = useState(1);
   const [order, setOrder] = useState("");
-  const lastPokeIndex = actualPage * pokesOnPage;
-  const firstPokeIndex = lastPokeIndex - pokesOnPage;
-  const actualPokes = allPokemons.slice(firstPokeIndex, lastPokeIndex);
-
-  const paging = (pageNumber) => {
-    setActualPage(pageNumber);
-  };
 
   useEffect(() => {
     dispatch(getTypes());
@@ -42,28 +37,36 @@ const Home = () => {
   const handleAllPokes = (e) => {
     e.preventDefault(e);
     dispatch(getPokemons());
+    setInput(1);
+    setPage(1);
   };
 
   const handleTypeOptions = (e) => {
     dispatch(filterByType(e.target.value));
+    setInput(1);
+    setPage(1);
   };
 
   const handleCreatedOptions = (e) => {
     dispatch(existingCreatedFilter(e.target.value));
+    setInput(1);
+    setPage(1);
   };
 
   const handleAbcOrder = (e) => {
     e.preventDefault(e);
     dispatch(alphabeticalOrder(e.target.value));
-    setActualPage(1);
     setOrder(`Ordered ${e.target.value}`);
+    setInput(1);
+    setPage(1);
   };
 
   const handleAttackOrder = (e) => {
     e.preventDefault(e);
     dispatch(orderAttack(e.target.value));
-    setActualPage(1);
     setOrder(`Ordered ${e.target.value}`);
+    setInput(1);
+    setPage(1);
   };
 
   return (
@@ -79,6 +82,11 @@ const Home = () => {
       >
         Load all Pokemons
       </button>
+      <div>
+        <Link to={"/"}>
+          <button>...want to see the landing page again?</button>
+        </Link>
+      </div>
       <div>
         <select defaultValue="title" onChange={(e) => handleAbcOrder(e)}>
           <option value="title" disabled>
@@ -116,24 +124,28 @@ const Home = () => {
           <option value="created">Created</option>
         </select>
         <Paging
-          pokesOnPage={pokesOnPage}
-          allPokemons={allPokemons.length}
-          paging={paging}
+          page={page}
+          setPage={setPage}
+          max={max}
+          input={input}
+          setInput={setInput}
         />
-        <SearchBar />
-        {actualPokes.length > 0 ? (
-          actualPokes.map((p) => {
-            return (
-              <Fragment key={p.id}>
-                <PokeCard
-                  id={p.id}
-                  image={p.image}
-                  name={p.name}
-                  types={p.types}
-                />
-              </Fragment>
-            );
-          })
+        <SearchBar setInput={setInput} setPage={setPage} />
+        {allPokemons.length > 0 ? (
+          allPokemons
+            .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
+            .map((p) => {
+              return (
+                <Fragment key={p.id}>
+                  <PokeCard
+                    id={p.id}
+                    image={p.image}
+                    name={p.name}
+                    types={p.types}
+                  />
+                </Fragment>
+              );
+            })
         ) : (
           <div>
             <br />

@@ -79,6 +79,10 @@ export const getPokeDetails = (id) => {
       });
     } catch (error) {
       console.log({ error: error.message });
+      return dispatch({
+        type: GET_POKE_DETAILS,
+        payload: { error: error.message },
+      });
     }
   };
 };

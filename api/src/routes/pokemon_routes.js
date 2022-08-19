@@ -57,8 +57,6 @@ router.post("/", async (req, res) => {
       types,
     } = req.body;
 
-    console.log(name, image, types);
-
     const validateURL = (url) => {
       return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
     };
