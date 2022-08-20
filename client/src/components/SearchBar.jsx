@@ -22,7 +22,7 @@ const SearchBar = ({ setInput, setPage }) => {
     }
   };
   const onKeyDown = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       e.preventDefault();
       if (name !== "") {
         dispatch(pokemonByName(name));

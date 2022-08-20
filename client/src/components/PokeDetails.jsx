@@ -5,12 +5,13 @@ import { getPokeDetails } from "../actions/index.js";
 import { Link } from "react-router-dom";
 import Error404 from "./Error404.jsx";
 import pokeLoading from "./Gifs/PokeLoading.gif";
+import "./styles/PokeDetails.css";
 
 const PokeDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const pokemon = useSelector((state) => state.pokeDetails);
-  console.log(pokemon);
+
   useEffect(() => {
     dispatch(getPokeDetails(id));
   }, [dispatch, id]);
@@ -23,34 +24,46 @@ const PokeDetails = () => {
         </div>
       ) : !pokemon.name ? (
         <div>
-          <br />
           <img src={pokeLoading} alt="Pokeimage not found" />
           <h2> Loading Pokemon Details... </h2>
         </div>
       ) : (
-        <div>
-          <img
-            src={pokemon.image}
-            alt="PokeImage not found"
-            height="250px"
-            width="200px"
-          />
-          <h1>Pokemon: {pokemon.name}</h1>
-          <h3>ID: {pokemon.id}</h3>
-          <h3>Health Power: {pokemon.hp}</h3>
-          <h3>Attack: {pokemon.attack}</h3>
-          <h3>Defense: {pokemon.defense}</h3>
-          <h3>Speed: {pokemon.speed}</h3>
-          <h3>Height: {pokemon.height}</h3>
-          <h3>Weight: {pokemon.weight}</h3>
-          <h3>
-            Types:
-            {pokemon.types?.map((t) => "  " + t.name + "  ")}
-          </h3>
-          <br />
-          <Link to="/home">
-            <button>GO HOME</button>
-          </Link>
+        <div className="background-details">
+          <div className="pokemon-card-container">
+            <div className="pokemon-card">
+              <div className="card-background">
+                <img
+                  src={pokemon.image}
+                  alt="PokeImage not found"
+                  className="image"
+                />
+              </div>
+              <div className="content">
+                <h1 className="pokemon-name">{pokemon.name}</h1>
+                <span className="pokemon-type">
+                  {pokemon.types?.map((t) => "  " + t.name + "  ")}
+                </span>
+                <div className="pokemon-stats">
+                  <p>ID: {pokemon.id}</p>
+                  <p>Health Power: {pokemon.hp}</p>
+                  <p>Attack: {pokemon.attack}</p>
+                  <p>Defense: {pokemon.defense}</p>
+                  <p>Speed: {pokemon.speed}</p>
+                  <p>Height: {pokemon.height}</p>
+                  <p>Weight: {pokemon.weight}</p>
+                  <p>
+                    Abilities: {pokemon.abilities?.map((a) => "  " + a + "  ")}
+                  </p>
+                </div>
+                <h1 className="pokemon-details">Pokemon Details</h1>
+              </div>
+            </div>
+          </div>
+          <div className="div-button-details">
+            <Link to="/home">
+              <button className="button-details">GO HOME</button>
+            </Link>
+          </div>
         </div>
       )}
     </div>

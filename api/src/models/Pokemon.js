@@ -30,6 +30,7 @@ module.exports = (sequelize) => {
           "https://www.seekpng.com/png/full/125-1251017_can-you-become-a-pokmon-master-like-me.png",
         validate: { isUrl: true },
       },
+      abilities: { type: DataTypes.JSON },
       createdInDb: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

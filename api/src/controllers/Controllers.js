@@ -24,6 +24,10 @@ const pokeApiInfo = async () => {
           speed: p.data.stats.find((s) => s.stat.name === "speed").base_stat,
           height: p.data.height,
           weight: p.data.weight,
+          abilities: p.data.abilities.map(
+            (a) =>
+              a.ability.name.charAt(0).toUpperCase() + a.ability.name.slice(1)
+          ),
           types: p.data.types.map(
             (t) =>
               (t = {
@@ -45,11 +49,6 @@ const pokeDbInfo = async () => {
   try {
     const pokemons = await Pokemon.findAll({
       include: Type,
-      // {
-      //   model: Type,
-      //   attributes: ["name"],
-      //   through: { attributes: [] },
-      // },
     });
     return pokemons;
   } catch (error) {

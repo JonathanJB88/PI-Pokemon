@@ -13,7 +13,7 @@
 
 .errorButton {
   background-color: #f2bf27;
-  border: 0 solid #f2f2f2;
+  border: 0 solid #0d0d0d;
   box-sizing: border-box;
   color: #0d0d0d;
   display: flex;
@@ -26,7 +26,7 @@
   padding: 0.75rem 1rem;
   position: relative;
   text-align: center;
-  width: 215px;
+  width: auto;
   position: relative;
   cursor: pointer;
   transform: rotate(-2deg);
@@ -42,7 +42,7 @@
 .errorButton:after {
   content: "";
   position: absolute;
-  border: 1px solid #f2f2f2;
+  border: 1px solid #0d0d0d;
   bottom: 4px;
   left: 4px;
   width: calc(100% - 1px);

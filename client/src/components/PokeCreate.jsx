@@ -20,6 +20,7 @@ const PokeCreate = () => {
     height: "",
     weight: "",
     types: [],
+    abilities: "",
     image: "",
   });
 
@@ -29,11 +30,7 @@ const PokeCreate = () => {
 
   const validate = (input) => {
     let errors = {};
-    if (
-      !input.name ||
-      typeof input.name !== "string" ||
-      input.name.length < 1
-    ) {
+    if (!input.name || !isNaN(input.name) || input.name.length < 1) {
       errors.name = "Please, input a name for your pokemon";
     } else if (input.image.length > 0 && !validateURL(input.image)) {
       errors.image =
@@ -75,6 +72,8 @@ const PokeCreate = () => {
       isNaN(input.weight)
     ) {
       errors.weight = "Please insert a valid weight number from 1 to 100";
+    } else if (!isNaN(input.abilities) || input.abilities.length <= 2) {
+      errors.abilities = "Please, type just the abilities of your pokemon";
     }
     return errors;
   };
@@ -95,8 +94,7 @@ const PokeCreate = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
     const valErrors = validate({ ...input, [e.target.name]: e.target.value });
     const valErrorTypes = valSelect(input);
-    console.log("change", valErrors);
-    console.log("select", valErrorTypes);
+
     if (
       JSON.stringify(valErrors) === "{}" &&
       JSON.stringify(valErrorTypes) === "{}"
@@ -145,7 +143,7 @@ const PokeCreate = () => {
       types: input.types?.filter((t) => t !== type),
     });
     const valErrors = validate(input);
-    console.log("select", valErrorTypes);
+
     if (
       JSON.stringify(valErrorTypes) === "{}" &&
       JSON.stringify(valErrors) === "{}"
@@ -171,6 +169,7 @@ const PokeCreate = () => {
       height: "",
       weight: "",
       types: [],
+      abilities: "",
       image: "",
     });
     history.push("/home");
@@ -218,6 +217,18 @@ const PokeCreate = () => {
             </div>
           ))}
           {errorSelect.types && <span>{errorSelect.types}</span>}
+        </div>
+        <br />
+        <div>
+          <label>Abilities: </label>
+          <input
+            type="text"
+            value={input.abilities}
+            name="abilities"
+            placeholder="Type your pokemon abilities here..."
+            onChange={(e) => handleChange(e)}
+          />
+          {errors.abilities && <span>{errors.abilities}</span>}
         </div>
         <br />
         <div>

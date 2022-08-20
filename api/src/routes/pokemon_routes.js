@@ -53,9 +53,12 @@ router.post("/", async (req, res) => {
       height,
       weight,
       image,
+      abilities,
       createdInDb,
       types,
     } = req.body;
+
+    const arrAbilities = abilities?.split(", ");
 
     const validateURL = (url) => {
       return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
@@ -63,7 +66,7 @@ router.post("/", async (req, res) => {
 
     const exists = await Pokemon.findOne({ where: { name: name } });
 
-    if (!name || typeof name !== "string" || name.length < 1) {
+    if (!name || !isNaN(name) || name.length < 1) {
       return res
         .status(404)
         .json({ error: "The pokemon name must be provided" });
@@ -99,8 +102,12 @@ router.post("/", async (req, res) => {
       return res.status(404).json({
         error: "The pokemon types must be from 1 to 3",
       });
+    } else if (!isNaN(abilities) || abilities.length <= 2) {
+      return res
+        .status(404)
+        .json({ error: "Please, type just the abilities of your pokemon" });
     } else if (exists) {
-      return res.json({ error: "This pokemons already exists!" });
+      return res.status(404).json({ error: "This pokemons already exists!" });
     } else {
       const newPokemon = await Pokemon.create({
         name: name.charAt(0).toUpperCase() + name.slice(1).toLowerCase(),
@@ -110,11 +117,15 @@ router.post("/", async (req, res) => {
         speed,
         height,
         weight,
+        abilities: arrAbilities.map(
+          (a) => a.charAt(0).toUpperCase() + a.slice(1).toLowerCase()
+        ),
         image: image
           ? image
           : "https://www.seekpng.com/png/full/125-1251017_can-you-become-a-pokmon-master-like-me.png",
         createdInDb,
       });
+
       const dbTypes = await Type.findAll({
         where: { name: types },
       });

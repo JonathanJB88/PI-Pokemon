@@ -1,0 +1,142 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.background-details {
+  background: url("../PokeImages/Ash-Ketchum.png"),
+    linear-gradient(to right, #f2c94c, #f2994a);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: 700px 10px, center center;
+}
+
+.pokemon-card-container {
+  background: linear-gradient(to right, #f77b6f, #f22613);
+  width: 350px;
+  height: auto;
+  margin-top: 30px;
+  margin-left: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #0d0d0d;
+}
+
+.content {
+  background: linear-gradient(to right, #ffd8d4, #f7a49c);
+  padding: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.card-background {
+  text-align: center;
+  background: linear-gradient(to right, #81362f, #740c02);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+}
+
+.pokemon-name {
+  text-align: center;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: bolder;
+  padding: 12px;
+}
+
+.pokemon-type {
+  background-color: #0d0d0d;
+  color: #f2f2f2;
+  padding: 7px;
+  border-radius: 5px;
+  width: 120px;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: -80px;
+}
+
+.pokemon-details {
+  text-align: center;
+  font-size: 14px;
+  font-family: cursive;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.pokemon-stats {
+  margin-top: -40px;
+}
+
+.pokemon-stats > p {
+  letter-spacing: 1px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.div-button-details {
+  position: absolute;
+  display: flex;
+  margin-left: 350px;
+  margin-top: 20px;
+}
+
+.button-details {
+  background-color: #f2bf27;
+  border: 0 solid #0d0d0d;
+  box-sizing: border-box;
+  color: #0d0d0d;
+  display: flex;
+  font-family: fantasy;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  width: auto;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-details:focus {
+  outline: 0;
+}
+
+.button-details:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #0d0d0d;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.button-details:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+@media (min-width: 768px) {
+  .button-details {
+    padding: 0.75rem 3rem;
+    font-size: 1.25rem;
+  }
+}
