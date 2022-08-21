@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getPokeDetails } from "../actions/index.js";
 import { Link } from "react-router-dom";
 import Error404 from "./Error404.jsx";
-import pokeLoading from "./Gifs/PokeLoading.gif";
+import Loading from "./Loading.jsx";
 import "./styles/PokeDetails.css";
 
 const PokeDetails = () => {
@@ -23,10 +23,7 @@ const PokeDetails = () => {
           <Error404 />
         </div>
       ) : !pokemon.name ? (
-        <div>
-          <img src={pokeLoading} alt="Pokeimage not found" />
-          <h2> Loading Pokemon Details... </h2>
-        </div>
+        <Loading />
       ) : (
         <div className="background-details">
           <div className="pokemon-card-container">

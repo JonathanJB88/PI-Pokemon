@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypes, createPokemon } from "../actions/index.js";
+import "./styles/PokeCreate.css";
 
 const PokeCreate = () => {
   const dispatch = useDispatch();
@@ -176,147 +177,169 @@ const PokeCreate = () => {
   };
 
   return (
-    <div>
+    <div className="bg-create">
+      <div className="reg-form">
+        <h1>Let's create a new Pokemon</h1>
+      </div>
+      <div className="main">
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="left">
+            <div>
+              <label>Pokemon name </label>
+              <input
+                className="input-create"
+                type="text"
+                value={input.name}
+                name="name"
+                placeholder="Type your pokemon name here..."
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.name && <p className="errors">{errors.name}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Abilities </label>
+              <input
+                className="input-create"
+                type="text"
+                value={input.abilities}
+                name="abilities"
+                placeholder="Type your pokemon abilities here..."
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.abilities && <p className="errors">{errors.abilities}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Poke image </label>
+              <input
+                className="input-create"
+                type="url"
+                value={input.image}
+                name="image"
+                placeholder="Url image..."
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.image && <p className="errors">{errors.image}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Choose types</label>
+              <select defaultValue="title" onChange={(e) => handleSelect(e)}>
+                <option value="title" disabled name="types">
+                  Choose types
+                </option>
+                {pokeTypes?.map((t) => {
+                  return (
+                    <option value={t.name} key={t.id}>
+                      {t.name}
+                    </option>
+                  );
+                })}
+              </select>
+              {input.types?.map((t, index) => (
+                <div key={index}>
+                  <span className="options">{t} </span>
+                  <span className="options" onClick={() => handleDelete(t)}>
+                    delete
+                  </span>
+                </div>
+              ))}
+              {errorSelect.types && (
+                <p className="errors">{errorSelect.types}</p>
+              )}
+            </div>
+            <br />
+          </div>
+          <div className="right">
+            <div>
+              <label>HP </label>
+              <input
+                className="input-create"
+                type="number"
+                placeholder="1 - 100"
+                value={input.hp}
+                name="hp"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.hp && <p className="errors">{errors.hp}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Attack</label>
+              <input
+                className="input-create"
+                type="number"
+                placeholder="1 - 100"
+                value={input.attack}
+                name="attack"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.attack && <p className="errors">{errors.attack}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Defense</label>
+              <input
+                className="input-create"
+                type="number"
+                placeholder="1 - 100"
+                value={input.defense}
+                name="defense"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.defense && <p className="errors">{errors.defense}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Speed</label>
+              <input
+                className="input-create"
+                type="number"
+                placeholder="1 - 100"
+                value={input.speed}
+                name="speed"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.speed && <p className="errors">{errors.speed}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Height</label>
+              <input
+                className="input-create"
+                type="number"
+                placeholder="1 - 100"
+                value={input.height}
+                name="height"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.height && <p className="errors">{errors.height}</p>}
+            </div>
+            <br />
+            <div>
+              <label>Weight</label>
+              <input
+                className="input-create"
+                type="number"
+                placeholder="1 - 100"
+                value={input.weight}
+                name="weight"
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.weight && <p className="errors">{errors.weight}</p>}
+            </div>
+            <br />
+          </div>
+          <input type="submit" value={"CREATE"} disabled={disabled} />
+        </form>
+      </div>
+      <br />
       <div>
         <Link to="/Home">
           <button>GO HOME</button>
         </Link>
-        <h1>Create your Pokemon</h1>
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Pokemon name: </label>
-          <input
-            type="text"
-            value={input.name}
-            name="name"
-            placeholder="Type your pokemon name here..."
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.name && <span>{errors.name}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Select Types:</label>
-          <select defaultValue="title" onChange={(e) => handleSelect(e)}>
-            <option value="title" disabled name="types">
-              Select Types:
-            </option>
-            {pokeTypes?.map((t) => {
-              return (
-                <option value={t.name} key={t.id}>
-                  {t.name}
-                </option>
-              );
-            })}
-          </select>
-          {input.types?.map((t, index) => (
-            <div key={index}>
-              <span>{t} </span>
-              <span onClick={() => handleDelete(t)}>X</span>
-            </div>
-          ))}
-          {errorSelect.types && <span>{errorSelect.types}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Abilities: </label>
-          <input
-            type="text"
-            value={input.abilities}
-            name="abilities"
-            placeholder="Type your pokemon abilities here..."
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.abilities && <span>{errors.abilities}</span>}
-        </div>
-        <br />
-        <div>
-          <label>PokeImage: </label>
-          <input
-            type="url"
-            value={input.image}
-            name="image"
-            placeholder="Url image..."
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.image && <span>{errors.image}</span>}
-        </div>
-        <br />
-        <div>
-          <label>HP: </label>
-          <input
-            type="number"
-            placeholder="1 - 100"
-            value={input.hp}
-            name="hp"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.hp && <span>{errors.hp}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Attack:</label>
-          <input
-            type="number"
-            placeholder="1 - 100"
-            value={input.attack}
-            name="attack"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.attack && <span>{errors.attack}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Defense:</label>
-          <input
-            type="number"
-            placeholder="1 - 100"
-            value={input.defense}
-            name="defense"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.defense && <span>{errors.defense}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Speed:</label>
-          <input
-            type="number"
-            placeholder="1 - 100"
-            value={input.speed}
-            name="speed"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.speed && <span>{errors.speed}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Height:</label>
-          <input
-            type="number"
-            placeholder="1 - 100"
-            value={input.height}
-            name="height"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.height && <span>{errors.height}</span>}
-        </div>
-        <br />
-        <div>
-          <label>Weight:</label>
-          <input
-            type="number"
-            placeholder="1 - 100"
-            value={input.weight}
-            name="weight"
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.weight && <span>{errors.weight}</span>}
-        </div>
-        <br />
-        <input type="submit" value={"CREATE"} disabled={disabled} />
-      </form>
     </div>
   );
 };

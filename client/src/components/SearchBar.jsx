@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { pokemonByName } from "../actions/index.js";
+import "./styles/SearchBar.css";
+import SearchIcon from "./PokeImages/Search_icon.png";
 
 const SearchBar = ({ setInput, setPage }) => {
   const dispatch = useDispatch();
@@ -35,16 +37,24 @@ const SearchBar = ({ setInput, setPage }) => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Find pokemons..."
-        value={name}
-        onKeyDown={(e) => onKeyDown(e)}
-        onChange={(e) => handleInput(e)}
-      />
-      <button type="submit" onClick={(e) => handleClick(e)}>
-        FIND
-      </button>
+      <div class="searchBar">
+        <input
+          className="searchBar-input"
+          required
+          type="text"
+          placeholder="Search..."
+          value={name}
+          onKeyDown={(e) => onKeyDown(e)}
+          onChange={(e) => handleInput(e)}
+        />
+        <button
+          className="searchBar-button"
+          type="submit"
+          onClick={(e) => handleClick(e)}
+        >
+          <img src={SearchIcon} alt="not found" />
+        </button>
+      </div>
     </div>
   );
 };

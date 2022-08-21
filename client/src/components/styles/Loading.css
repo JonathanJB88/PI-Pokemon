@@ -1,0 +1,26 @@
+.loading {
+  width: auto;
+  height: auto;
+  margin-top: 150px;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 40px;
+  font-family: fantasy;
+  margin-top: 10px;
+  padding: 10px;
+  letter-spacing: 1px;
+}
+
+.loading-container {
+  background: linear-gradient(to right, #f2c94c, #f2994a);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+}

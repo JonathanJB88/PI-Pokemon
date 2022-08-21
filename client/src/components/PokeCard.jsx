@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./styles/PokeCard.css";
 
 const PokeCard = ({ id, image, name, types }) => {
   return (
-    <div>
-      <h3>Pokemon: {name}</h3>
-      <Link to={`/pokeDetails/${id}`}>
-        <img
-          src={image}
-          alt="PokeImage not found"
-          width="200px"
-          height="250px"
-        />
-      </Link>
-      <h4>Types: {types.map((t) => " " + t.name + " ")}</h4>
-      <br />
+    <div className="home-background">
+      <div className="card-container">
+        <div className="cards">
+          <div className="card-image">
+            <Link to={`/pokeDetails/${id}`}>
+              <img src={image} alt="PokeImage not found" />
+            </Link>
+          </div>
+          <div className="card-content">
+            <h3>{name}</h3>
+            <p>{types.map((t) => " " + t.name + " ")}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

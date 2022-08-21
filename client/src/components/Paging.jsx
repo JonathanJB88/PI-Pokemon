@@ -41,7 +41,7 @@ const Paging = ({ page, setPage, max, setInput, input }) => {
         <img src={previous} alt="not found" width="10px" height="15px" />
       </button>
       <input
-        className="input"
+        className="input-pag"
         onChange={(e) => onChange(e)}
         onKeyDown={(e) => onKeyDown(e)}
         name="page"

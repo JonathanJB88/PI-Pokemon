@@ -1,0 +1,117 @@
+.bg-create {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg-create::after {
+  content: "";
+  background: url("../PokeImages/Bg-create.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.reg-form {
+  width: 900px;
+  background-color: rgb(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 10px, 0px, 10px, 0px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  background-color: rgb(0, 0, 0, 0.5);
+  width: 900px;
+  height: 550px;
+  margin: auto;
+  border-radius: 0px 0px 15px 15px;
+}
+
+form {
+  padding-top: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.left {
+  float: left;
+  padding: 30px;
+  margin-left: 20px;
+}
+
+.right {
+  float: right;
+  padding: 30px;
+  margin-right: 50px;
+}
+
+label {
+  color: white;
+  font-family: cursive;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.input-create {
+  flex-grow: 1;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #e73828;
+  border-radius: 5px;
+  background: #f3d8d5;
+  transition: background 0.25s, box-shadow 0.25s;
+  width: 100%;
+  max-width: 300px;
+  display: inline-flex;
+  font-family: cursive;
+}
+
+.input-create:focus {
+  background: white;
+  box-shadow: 0 0 2px #dfb2ad;
+}
+
+.input-create::placeholder {
+  color: #dd8e86;
+}
+
+select {
+  flex-grow: 1;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #e73828;
+  border-radius: 5px;
+  background: #f3d8d5;
+  transition: background 0.25s, box-shadow 0.25s;
+  width: 100%;
+  max-width: 300px;
+  display: inline-flex;
+  font-family: cursive;
+  color: #dd8e86;
+}
+
+.errors {
+  color: #f22613;
+  font-family: cursive;
+  font-size: 14px;
+  text-align: center;
+}
+
+.options {
+  color: #f22613;
+  font-family: cursive;
+  font-size: 16px;
+}
