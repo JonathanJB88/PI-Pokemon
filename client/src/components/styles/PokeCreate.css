@@ -8,7 +8,7 @@
 
 .bg-create::after {
   content: "";
-  background: url("../PokeImages/Bg-create.png");
+  background: url("../PokeImages/Bg-create.png") #f7d676;
   background-repeat: no-repeat;
   background-size: auto 100%;
   opacity: 0.5;
@@ -22,8 +22,8 @@
 
 .reg-form {
   width: 900px;
-  background-color: rgb(0, 0, 0, 0.6);
-  color: #ffffff;
+  background-color: rgba(60, 95, 166, 0.6);
+  color: #0d0d0d;
   padding: 10px, 0px, 10px, 0px;
   text-align: center;
   border-radius: 15px 15px 0px 0px;
@@ -33,7 +33,7 @@
 }
 
 .main {
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgb(60, 95, 166, 0.4);
   width: 900px;
   height: 550px;
   margin: auto;
@@ -59,10 +59,12 @@ form {
 }
 
 label {
-  color: white;
+  color: #0d0d0d;
   font-family: cursive;
   letter-spacing: 1px;
   font-size: 16px;
+  float: left;
+  margin-left: 5%;
 }
 
 .input-create {
@@ -80,12 +82,13 @@ label {
 }
 
 .input-create:focus {
-  background: white;
+  background: #f2f2f2;
   box-shadow: 0 0 2px #dfb2ad;
 }
 
 .input-create::placeholder {
-  color: #dd8e86;
+  color: #0d0d0d;
+  opacity: 0.5;
 }
 
 select {
@@ -100,7 +103,7 @@ select {
   max-width: 300px;
   display: inline-flex;
   font-family: cursive;
-  color: #dd8e86;
+  color: #0d0d0d;
 }
 
 .errors {
@@ -111,7 +114,132 @@ select {
 }
 
 .options {
+  color: #0d0d0d;
+  font-family: cursive;
+  font-size: 14px;
+  text-align: center;
+}
+.options-delete {
   color: #f22613;
   font-family: cursive;
-  font-size: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.div-create-button {
+  position: absolute;
+  margin-left: 75px;
+  margin-top: 450px;
+}
+
+.create-button {
+  background-color: #f2bf27;
+  border: 0.5px solid #0d0d0d;
+  box-sizing: border-box;
+  color: #0d0d0d;
+  display: flex;
+  font-family: fantasy;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.create-button:disabled {
+  background-color: #f8df94;
+}
+
+.create-button:focus {
+  outline: 0;
+}
+
+.create-button:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #0d0d0d;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.create-button:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+@media (min-width: 768px) {
+  .create-button {
+    padding: 0.75rem 3rem;
+    font-size: 1.25rem;
+  }
+}
+
+.div-home-button {
+  position: absolute;
+  margin-left: 500px;
+  margin-top: -120px;
+}
+
+.home-button {
+  background-color: #f2bf27;
+  border: 0.5px solid #0d0d0d;
+  box-sizing: border-box;
+  color: #0d0d0d;
+  display: flex;
+  font-family: fantasy;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.home-button:disabled {
+  background-color: #f8df94;
+}
+
+.home-button:focus {
+  outline: 0;
+}
+
+.home-button:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #0d0d0d;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.home-button:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
+
+@media (min-width: 768px) {
+  .home-button {
+    padding: 0.75rem 3rem;
+    font-size: 1.25rem;
+  }
 }

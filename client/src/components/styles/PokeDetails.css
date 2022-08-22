@@ -94,7 +94,7 @@
 
 .button-details {
   background-color: #f2bf27;
-  border: 0 solid #0d0d0d;
+  border: 0.5px solid #0d0d0d;
   box-sizing: border-box;
   color: #0d0d0d;
   display: flex;

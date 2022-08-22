@@ -211,7 +211,7 @@ const PokeCreate = () => {
             </div>
             <br />
             <div>
-              <label>Poke image </label>
+              <label>Pokemon image </label>
               <input
                 className="input-create"
                 type="url"
@@ -240,7 +240,10 @@ const PokeCreate = () => {
               {input.types?.map((t, index) => (
                 <div key={index}>
                   <span className="options">{t} </span>
-                  <span className="options" onClick={() => handleDelete(t)}>
+                  <span
+                    className="options-delete"
+                    onClick={() => handleDelete(t)}
+                  >
                     delete
                   </span>
                 </div>
@@ -331,13 +334,20 @@ const PokeCreate = () => {
             </div>
             <br />
           </div>
-          <input type="submit" value={"CREATE"} disabled={disabled} />
+          <div className="div-create-button">
+            <input
+              className="create-button"
+              type="submit"
+              value={"CREATE"}
+              disabled={disabled}
+            />
+          </div>
         </form>
       </div>
       <br />
-      <div>
+      <div className="div-home-button">
         <Link to="/Home">
-          <button>GO HOME</button>
+          <button className="home-button">GO HOME</button>
         </Link>
       </div>
     </div>

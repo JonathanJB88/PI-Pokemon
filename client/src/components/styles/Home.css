@@ -1,0 +1,90 @@
+.bg-home {
+  background: linear-gradient(to right, #f2c94c, #f2994a);
+  height: 1200px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+}
+
+.pag-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 120px;
+}
+
+.logo-home {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: -120px;
+  margin-left: 15px;
+}
+
+.logo {
+  width: 400px;
+  height: 400px;
+}
+
+#menu {
+  background: linear-gradient(to right, #f2c94c, #f2994a);
+}
+
+/* #menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: -630px;
+} */
+
+#menu ul li {
+  display: inline-block;
+}
+
+#menu ul li a {
+  color: #0d0d0d;
+  display: block;
+  padding: 20px 10px;
+  text-decoration: none;
+  font-family: fantasy;
+  font-size: 18px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+#menu ul li a:hover {
+  background-color: #fdeaaf;
+}
+
+#Order-filter {
+  background: linear-gradient(to right, #f2c94c, #f2994a);
+}
+
+/* #Order-filter ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: -640px;
+} */
+
+#Order-filter ul li {
+  display: inline-block;
+  padding: 0px 5px;
+}
+
+#Order-filter ul li select {
+  color: #0d0d0d;
+  display: block;
+  padding: 8px;
+}
+
+#Order-filter ul li select:hover {
+  background-color: #fceec4;
+  cursor: pointer;
+}

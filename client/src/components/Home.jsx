@@ -13,7 +13,9 @@ import { Link } from "react-router-dom";
 import PokeCard from "./PokeCard";
 import Paging from "./Paging.jsx";
 import SearchBar from "./SearchBar.jsx";
-import pokeLoading from "./Gifs/PokeLoading.gif";
+import Loading from "./Loading.jsx";
+import logo from "./PokeImages/Logo.png";
+import "./styles/Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -70,67 +72,90 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Pokemon App</h1>
-      <Link to={"/pokeCreate"}>
-        <button>Create Pokemon</button>
-      </Link>
-      <button
-        onClick={(e) => {
-          handleAllPokes(e);
-        }}
-      >
-        Load all Pokemons
-      </button>
-      <div>
-        <Link to={"/"}>
-          <button>...want to see the landing page again?</button>
-        </Link>
+    <div className="bg-home">
+      <div className="logo-home">
+        <img className="logo" src={logo} alt="Pokeimage not found" />
       </div>
-      <div>
-        <select defaultValue="title" onChange={(e) => handleAbcOrder(e)}>
-          <option value="title" disabled>
-            Order by: alphabet
-          </option>
-          <option value="asc">A to Z</option>
-          <option value="desc">Z to A</option>
-        </select>
-        <select defaultValue="title" onChange={(e) => handleTypeOptions(e)}>
-          <option value="title" disabled>
-            Filter by: Type
-          </option>
-          <option value="all">All</option>
-          {allTypes?.map((t) => {
-            return (
-              <option value={t.name} key={t.id}>
-                {t.name}
+      <div id="menu">
+        <ul>
+          <li>
+            <Link to={"/pokeCreate"}>
+              <a href="#">Create Pokemon</a>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <a
+                href="#"
+                onClick={(e) => {
+                  handleAllPokes(e);
+                }}
+              >
+                Load all Pokemons
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link to={"/"}>
+              <a href="#">Landing Page</a>
+            </Link>
+          </li>
+          <li>
+            <SearchBar setInput={setInput} setPage={setPage} />
+          </li>
+        </ul>
+      </div>
+      <div id="Order-filter">
+        <ul>
+          <li>
+            <select defaultValue="title" onChange={(e) => handleAbcOrder(e)}>
+              <option value="title" disabled>
+                Order by: alphabet
               </option>
-            );
-          })}
-        </select>
-        <select defaultValue="title" onChange={(e) => handleAttackOrder(e)}>
-          <option value="title" disabled>
-            Order by: Attack
-          </option>
-          <option value="powerfull">Powerfull</option>
-          <option value="weak">Weak</option>
-        </select>
-        <select defaultValue="title" onChange={(e) => handleCreatedOptions(e)}>
-          <option value="title" disabled>
-            Filter by: Existing or Created
-          </option>
-          <option value="all">All</option>
-          <option value="api">Existing</option>
-          <option value="created">Created</option>
-        </select>
-        <Paging
-          page={page}
-          setPage={setPage}
-          max={max}
-          input={input}
-          setInput={setInput}
-        />
-        <SearchBar setInput={setInput} setPage={setPage} />
+              <option value="asc">A to Z</option>
+              <option value="desc">Z to A</option>
+            </select>
+          </li>
+          <li>
+            <select defaultValue="title" onChange={(e) => handleAttackOrder(e)}>
+              <option value="title" disabled>
+                Order by: Attack
+              </option>
+              <option value="powerfull">Powerfull</option>
+              <option value="weak">Weak</option>
+            </select>
+          </li>
+          <li>
+            <select defaultValue="title" onChange={(e) => handleTypeOptions(e)}>
+              <option value="title" disabled>
+                Filter by: Type
+              </option>
+              <option value="all">All</option>
+              {allTypes?.map((t) => {
+                return (
+                  <option value={t.name} key={t.id}>
+                    {t.name}
+                  </option>
+                );
+              })}
+            </select>
+          </li>
+          <li>
+            <select
+              defaultValue="title"
+              onChange={(e) => handleCreatedOptions(e)}
+            >
+              <option value="title" disabled>
+                Filter by: Existing or Created
+              </option>
+              <option value="all">All</option>
+              <option value="api">Existing</option>
+              <option value="created">Created</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+      <div className="grid-container">
         {allPokemons.length > 0 ? (
           allPokemons
             .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
@@ -148,11 +173,18 @@ const Home = () => {
             })
         ) : (
           <div>
-            <br />
-            <img src={pokeLoading} alt="Pokeimage not found" />
-            <h2> Loading Pokemons... </h2>
+            <Loading />
           </div>
         )}
+      </div>
+      <div className="pag-container">
+        <Paging
+          page={page}
+          setPage={setPage}
+          max={max}
+          input={input}
+          setInput={setInput}
+        />
       </div>
     </div>
   );
