@@ -37,7 +37,7 @@ const SearchBar = ({ setInput, setPage }) => {
 
   return (
     <div>
-      <div class="searchBar">
+      <div className="searchBar">
         <input
           className="searchBar-input"
           required

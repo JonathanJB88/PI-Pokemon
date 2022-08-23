@@ -7,3 +7,4 @@ export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
 export const GET_POKEMON_BY_NAME = "GET_POKEMON_BY_NAME";
 export const CREATE_POKEMON = "CREATE_POKEMON";
 export const GET_POKE_DETAILS = "GET_POKE_DETAILS";
+export const ERROR_404 = "ERROR_404";

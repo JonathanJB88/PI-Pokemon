@@ -64,7 +64,10 @@ router.post("/", async (req, res) => {
       return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
     };
 
-    const exists = await Pokemon.findOne({ where: { name: name } });
+    const pokemons = await allPokeInfo();
+    const exists = pokemons?.filter(
+      (p) => p.name.toLowerCase() === name.toLowerCase()
+    );
 
     if (!name || !isNaN(name) || name.length < 1) {
       return res
@@ -106,7 +109,8 @@ router.post("/", async (req, res) => {
       return res
         .status(404)
         .json({ error: "Please, type just the abilities of your pokemon" });
-    } else if (exists) {
+    } else if (exists.length) {
+      console.log({ error: "This pokemons already exists!" });
       return res.status(404).json({ error: "This pokemons already exists!" });
     } else {
       const newPokemon = await Pokemon.create({
@@ -122,7 +126,7 @@ router.post("/", async (req, res) => {
         ),
         image: image
           ? image
-          : "https://www.seekpng.com/png/full/125-1251017_can-you-become-a-pokmon-master-like-me.png",
+          : "https://i.pinimg.com/originals/f9/7f/5c/f97f5c6510994f677877b08320475008.gif",
         createdInDb,
       });
 

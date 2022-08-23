@@ -8,6 +8,7 @@ import {
   GET_POKE_DETAILS,
   GET_TYPES,
   ORDER_BY_ATTACK,
+  ERROR_404,
 } from "./action_types.js";
 
 export const getPokemons = () => {
@@ -80,7 +81,7 @@ export const getPokeDetails = (id) => {
     } catch (error) {
       console.log({ error: error.message });
       return dispatch({
-        type: GET_POKE_DETAILS,
+        type: ERROR_404,
         payload: { error: error.message },
       });
     }

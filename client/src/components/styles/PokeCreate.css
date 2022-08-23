@@ -124,6 +124,7 @@ select {
   font-family: cursive;
   font-size: 14px;
   text-align: center;
+  cursor: pointer;
 }
 
 .div-create-button {

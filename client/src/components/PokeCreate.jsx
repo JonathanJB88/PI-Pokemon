@@ -8,6 +8,7 @@ const PokeCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const pokeTypes = useSelector((state) => state.types);
+  const pokemons = useSelector((state) => state.allPokemons);
 
   const [errors, setErrors] = useState({});
   const [errorSelect, setErrorSelect] = useState({});
@@ -33,6 +34,10 @@ const PokeCreate = () => {
     let errors = {};
     if (!input.name || !isNaN(input.name) || input.name.length < 1) {
       errors.name = "Please, input a name for your pokemon";
+    } else if (
+      pokemons.find((p) => p.name.toLowerCase() === input.name.toLowerCase())
+    ) {
+      errors.name = "There is already a pokemon with that name";
     } else if (input.image.length > 0 && !validateURL(input.image)) {
       errors.image =
         "Please, insert a jpg, jpeg, png, webp, avif, gif, svg url image of your pokemon";
@@ -225,7 +230,11 @@ const PokeCreate = () => {
             <br />
             <div>
               <label>Choose types</label>
-              <select defaultValue="title" onChange={(e) => handleSelect(e)}>
+              <select
+                disabled={input.types.length > 2}
+                defaultValue="title"
+                onChange={(e) => handleSelect(e)}
+              >
                 <option value="title" disabled name="types">
                   Choose types
                 </option>

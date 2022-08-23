@@ -6,7 +6,7 @@ import logo from "./PokeImages/Logo.png";
 const LandingPage = () => {
   return (
     <div className="background">
-      <img className="logo" src={logo} alt="Pokeimage not found" />
+      <img className="logo-landing" src={logo} alt="Pokeimage not found" />
       <div className="divbutton">
         <Link to={"/home"}>
           <button className="button">DISCOVER</button>

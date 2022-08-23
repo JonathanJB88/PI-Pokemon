@@ -11,6 +11,7 @@ const PokeDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const pokemon = useSelector((state) => state.pokeDetails);
+  const error = useSelector((state) => state.error);
 
   useEffect(() => {
     dispatch(getPokeDetails(id));
@@ -18,11 +19,11 @@ const PokeDetails = () => {
 
   return (
     <div>
-      {pokemon.error ? (
+      {error ? (
         <div>
           <Error404 />
         </div>
-      ) : !pokemon.name ? (
+      ) : !pokemon ? (
         <Loading />
       ) : (
         <div className="background-details">

@@ -8,13 +8,15 @@ import {
   GET_POKE_DETAILS,
   GET_TYPES,
   ORDER_BY_ATTACK,
+  ERROR_404,
 } from ".././actions/action_types.js";
 
 const initialState = {
   allPokemons: [],
   pokemons: [],
   types: [],
-  pokeDetails: [],
+  pokeDetails: null,
+  error: null,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -113,6 +115,8 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokeDetails: action.payload,
       };
+    case ERROR_404:
+      return { ...state, error: action.payload };
     case CREATE_POKEMON:
       return { ...state };
     default:
