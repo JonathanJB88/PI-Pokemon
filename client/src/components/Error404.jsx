@@ -8,7 +8,7 @@ const Error404 = () => {
     <div>
       <img className="errorImage" src={error404} alt="Pokeimage not found" />
       <div className="divErrorButton">
-        <Link to="/home">
+        <Link className="Link" to="/home">
           <button className="errorButton">GO BACK HOME</button>
         </Link>
       </div>

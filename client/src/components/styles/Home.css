@@ -1,6 +1,10 @@
+.Link {
+  text-decoration: none;
+}
+
 .bg-home {
   background: linear-gradient(to right, #f2c94c, #f2994a);
-  height: 1200px;
+  min-height: 657px;
 }
 
 .grid-container {
@@ -14,7 +18,7 @@
 .pag-container {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 120px;
+  padding-bottom: 20px;
 }
 
 .logo-home {

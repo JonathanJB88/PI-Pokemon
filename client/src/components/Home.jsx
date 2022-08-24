@@ -20,6 +20,7 @@ import "./styles/Home.css";
 const Home = () => {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector((state) => state.allPokemons);
   const allTypes = useSelector((state) => state.types);
 
   const [page, setPage] = useState(1);
@@ -80,7 +81,7 @@ const Home = () => {
         <div id="menu">
           <ul>
             <li>
-              <Link to={"/pokeCreate"}>
+              <Link className="Link" to={"/pokeCreate"}>
                 <button className="home-buttons">Create Pokemon</button>
               </Link>
             </li>
@@ -95,7 +96,7 @@ const Home = () => {
               </button>
             </li>
             <li>
-              <Link to={"/"}>
+              <Link className="Link" to={"/"}>
                 <button className="home-buttons">Landing Page</button>
               </Link>
             </li>
@@ -162,7 +163,7 @@ const Home = () => {
         </div>
       </div>
       <div className="grid-container">
-        {allPokemons.length > 0 ? (
+        {pokemons.length > 0 ? (
           allPokemons
             .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
             .map((p) => {

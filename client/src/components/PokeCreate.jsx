@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypes, createPokemon } from "../actions/index.js";
+import { getTypes, createPokemon, getPokemons } from "../actions/index.js";
 import "./styles/PokeCreate.css";
 
 const PokeCreate = () => {
@@ -94,6 +94,7 @@ const PokeCreate = () => {
 
   useEffect(() => {
     dispatch(getTypes());
+    dispatch(getPokemons());
   }, [dispatch]);
 
   const handleChange = (e) => {
@@ -355,7 +356,7 @@ const PokeCreate = () => {
       </div>
       <br />
       <div className="div-home-button">
-        <Link to="/Home">
+        <Link className="Link" to="/Home">
           <button className="home-button">GO HOME</button>
         </Link>
       </div>

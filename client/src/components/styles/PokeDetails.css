@@ -20,7 +20,7 @@
   background: linear-gradient(to right, #f77b6f, #f22613);
   width: 350px;
   height: auto;
-  margin-top: 30px;
+  margin-top: 40px;
   margin-left: 250px;
   padding: 15px;
   border-radius: 10px;
@@ -88,8 +88,8 @@
 .div-button-details {
   position: absolute;
   display: flex;
-  margin-left: 350px;
-  margin-top: 20px;
+  margin-left: 1140px;
+  margin-top: -20px;
 }
 
 .button-details {

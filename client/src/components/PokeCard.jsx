@@ -7,7 +7,7 @@ const PokeCard = ({ id, image, name, types }) => {
     <div className="card-container">
       <div className="cards">
         <div className="card-image">
-          <Link to={`/pokeDetails/${id}`}>
+          <Link className="Link" to={`/pokeDetails/${id}`}>
             <img src={image} alt="PokeImage not found" />
           </Link>
         </div>

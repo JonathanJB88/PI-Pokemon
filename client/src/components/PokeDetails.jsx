@@ -58,7 +58,7 @@ const PokeDetails = () => {
             </div>
           </div>
           <div className="div-button-details">
-            <Link to="/home">
+            <Link className="Link" to="/home">
               <button className="button-details">GO HOME</button>
             </Link>
           </div>

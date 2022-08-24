@@ -49,7 +49,12 @@ const rootReducer = (state = initialState, action) => {
           : allPokes?.filter((p) => p.createdInDb !== true);
       return {
         ...state,
-        pokemons: action.payload === "all" ? allPokes : pokeFilter,
+        pokemons:
+          action.payload === "all"
+            ? allPokes
+            : pokeFilter.length > 0
+            ? pokeFilter
+            : allPokes,
       };
     case ALPHABETICAL_ORDER:
       const pokes = state.pokemons;
