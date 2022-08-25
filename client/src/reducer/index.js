@@ -17,6 +17,8 @@ const initialState = {
   types: [],
   pokeDetails: null,
   error: null,
+  pokemonsByType: [],
+  pokemonsByOrigin: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -24,6 +26,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_POKEMONS:
       return {
         ...state,
+        error: null,
         pokemons: action.payload,
         allPokemons: action.payload,
       };
@@ -37,9 +40,18 @@ const rootReducer = (state = initialState, action) => {
           : allPokemons?.filter((p) =>
               p.types.map((t) => t.name).includes(action.payload)
             );
+      const commonPokes1 =
+        state.pokemonsByOrigin.length > 0
+          ? filteredByType.filter((p) => state.pokemonsByOrigin.includes(p))
+          : filteredByType;
       return {
         ...state,
-        pokemons: filteredByType,
+        pokemonsByType: filteredByType,
+        pokemons: commonPokes1,
+        error:
+          commonPokes1.length === 0
+            ? { message: "There are no created dogs yet" }
+            : null,
       };
     case EXISTING_CREATED_FILTER:
       const allPokes = state.allPokemons;
@@ -47,14 +59,18 @@ const rootReducer = (state = initialState, action) => {
         action.payload === "created"
           ? allPokes?.filter((p) => p.createdInDb === true)
           : allPokes?.filter((p) => p.createdInDb !== true);
+      const commonPokes2 =
+        state.pokemonsByType.length > 0
+          ? pokeFilter.filter((p) => state.pokemonsByType.includes(p))
+          : pokeFilter;
       return {
         ...state,
-        pokemons:
-          action.payload === "all"
-            ? allPokes
-            : pokeFilter.length > 0
-            ? pokeFilter
-            : allPokes,
+        pokemonsByOrigin: pokeFilter,
+        pokemons: commonPokes2,
+        error:
+          commonPokes2.length === 0
+            ? { message: "There are no created dogs yet" }
+            : null,
       };
     case ALPHABETICAL_ORDER:
       const pokes = state.pokemons;

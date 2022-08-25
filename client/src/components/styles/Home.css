@@ -107,3 +107,46 @@
   background-color: #fceec4;
   cursor: pointer;
 }
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 550px;
+  margin-top: 50px;
+}
+
+.error-container h1 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  width: 140px;
+  text-align: center;
+  white-space: nowrap;
+  padding-bottom: 13px;
+  margin-left: -170px;
+  padding-top: 50px;
+  font-family: fantasy;
+}
+.error-container h1:before {
+  background-color: #f22613;
+  content: "";
+  display: block;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 5px;
+}
+
+.error-container h1:after {
+  background-color: #f22613;
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 85px;
+  margin-right: 310px;
+}

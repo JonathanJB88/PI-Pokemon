@@ -15,12 +15,12 @@ import Paging from "./Paging.jsx";
 import SearchBar from "./SearchBar.jsx";
 import Loading from "./Loading.jsx";
 import logo from "./PokeImages/Logo.png";
+import Psyduck from "./PokeImages/Psyduck.gif";
 import "./styles/Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const pokemons = useSelector((state) => state.allPokemons);
   const allTypes = useSelector((state) => state.types);
 
   const [page, setPage] = useState(1);
@@ -29,12 +29,12 @@ const Home = () => {
   const [input, setInput] = useState(1);
   const [order, setOrder] = useState("");
 
-  useEffect(() => {
-    dispatch(getTypes());
-  }, [dispatch]);
+  const [selected, setSelected] = useState(false);
+  const error = useSelector((state) => state.error);
 
   useEffect(() => {
     dispatch(getPokemons());
+    dispatch(getTypes());
   }, [dispatch]);
 
   const handleAllPokes = (e) => {
@@ -42,15 +42,18 @@ const Home = () => {
     dispatch(getPokemons());
     setInput(1);
     setPage(1);
+    setSelected(true);
   };
 
   const handleTypeOptions = (e) => {
+    e.preventDefault(e);
     dispatch(filterByType(e.target.value));
     setInput(1);
     setPage(1);
   };
 
   const handleCreatedOptions = (e) => {
+    e.preventDefault(e);
     dispatch(existingCreatedFilter(e.target.value));
     setInput(1);
     setPage(1);
@@ -109,7 +112,7 @@ const Home = () => {
           <ul>
             <li>
               <select defaultValue="title" onChange={(e) => handleAbcOrder(e)}>
-                <option value="title" disabled>
+                <option value="title" selected={selected} disabled>
                   Order by: alphabet
                 </option>
                 <option value="asc">A to Z</option>
@@ -121,7 +124,7 @@ const Home = () => {
                 defaultValue="title"
                 onChange={(e) => handleAttackOrder(e)}
               >
-                <option value="title" disabled>
+                <option value="title" selected={selected} disabled>
                   Order by: Attack
                 </option>
                 <option value="powerfull">Powerfull</option>
@@ -133,7 +136,7 @@ const Home = () => {
                 defaultValue="title"
                 onChange={(e) => handleTypeOptions(e)}
               >
-                <option value="title" disabled>
+                <option value="title" selected={selected} disabled>
                   Filter by: Type
                 </option>
                 <option value="all">All</option>
@@ -151,10 +154,9 @@ const Home = () => {
                 defaultValue="title"
                 onChange={(e) => handleCreatedOptions(e)}
               >
-                <option value="title" disabled>
+                <option value="title" selected={selected} disabled>
                   Filter by: Existing or Created
                 </option>
-                <option value="all">All</option>
                 <option value="api">Existing</option>
                 <option value="created">Created</option>
               </select>
@@ -163,7 +165,12 @@ const Home = () => {
         </div>
       </div>
       <div className="grid-container">
-        {pokemons.length > 0 ? (
+        {error ? (
+          <div className="error-container">
+            <img src={Psyduck} alt="Not Found" />
+            <h1>No matches found, try again or load all pokemons!</h1>
+          </div>
+        ) : allPokemons.length > 0 ? (
           allPokemons
             .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
             .map((p) => {

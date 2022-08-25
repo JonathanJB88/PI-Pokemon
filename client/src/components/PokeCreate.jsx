@@ -125,8 +125,7 @@ const PokeCreate = () => {
         types: [...input.types, e.target.value],
       });
       const valErrors = validate(input);
-      console.log("change", valErrors);
-      console.log("select", valErrorTypes);
+
       if (
         JSON.stringify(valErrorTypes) === "{}" &&
         JSON.stringify(valErrors) === "{}"
