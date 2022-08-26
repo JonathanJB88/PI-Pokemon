@@ -29,6 +29,8 @@ const rootReducer = (state = initialState, action) => {
         error: null,
         pokemons: action.payload,
         allPokemons: action.payload,
+        pokemonsByOrigin: action.payload,
+        pokemonsByType: action.payload,
       };
     case GET_TYPES:
       return { ...state, types: action.payload };
