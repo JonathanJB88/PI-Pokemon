@@ -9,6 +9,8 @@ import {
   GET_TYPES,
   ORDER_BY_ATTACK,
   ERROR_404,
+  DELETE_POKEMON,
+  CLEAN_DETAIL,
 } from "./action_types.js";
 
 export const getPokemons = () => {
@@ -110,5 +112,26 @@ export const orderAttack = (payload) => {
   return {
     type: ORDER_BY_ATTACK,
     payload,
+  };
+};
+
+export const deletePokemon = (id) => {
+  return async (dispatch) => {
+    try {
+      const json = await axios.delete(`pokemons/delete/${id}`);
+      return dispatch({
+        type: DELETE_POKEMON,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log({ error: error.message });
+    }
+  };
+};
+
+export const cleanDetail = () => {
+  return {
+    type: CLEAN_DETAIL,
+    payload: {},
   };
 };

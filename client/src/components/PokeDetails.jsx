@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getPokeDetails } from "../actions/index.js";
+import { useParams, useHistory } from "react-router-dom";
+import {
+  cleanDetail,
+  deletePokemon,
+  getPokeDetails,
+} from "../actions/index.js";
 import { Link } from "react-router-dom";
 import Error404 from "./Error404.jsx";
 import Loading from "./Loading.jsx";
@@ -10,12 +14,28 @@ import "./styles/PokeDetails.css";
 const PokeDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const history = useHistory();
   const pokemon = useSelector((state) => state.pokeDetails);
   const error = useSelector((state) => state.error);
 
   useEffect(() => {
     dispatch(getPokeDetails(id));
   }, [dispatch, id]);
+
+  const handleClick = () => {
+    dispatch(cleanDetail());
+  };
+
+  const handleDelete = () => {
+    if (pokemon["createdInDb"]) {
+      dispatch(deletePokemon(id));
+      dispatch(cleanDetail());
+      alert("Your pokemon has been successfully deleted");
+      history.push("/home");
+    } else {
+      alert("You can not delete an original pokemon");
+    }
+  };
 
   return (
     <div>
@@ -54,12 +74,22 @@ const PokeDetails = () => {
                   </p>
                 </div>
                 <h1 className="pokemon-details">Pokemon Details</h1>
+                <div className="delete-container">
+                  <button
+                    className="deleteButton"
+                    onClick={() => handleDelete()}
+                  >
+                    DELETE
+                  </button>
+                </div>
               </div>
             </div>
           </div>
           <div className="div-button-details">
             <Link className="Link" to="/home">
-              <button className="button-details">GO HOME</button>
+              <button className="button-details" onClick={() => handleClick()}>
+                GO HOME
+              </button>
             </Link>
           </div>
         </div>

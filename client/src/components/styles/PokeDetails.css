@@ -141,3 +141,29 @@
     font-size: 1.25rem;
   }
 }
+
+.delete-container {
+  position: absolute;
+  margin-top: -52px;
+  margin-left: 260px;
+}
+
+.deleteButton {
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.5em;
+  border-radius: 50px;
+  padding: 6px;
+  background: #f2bf27;
+  color: #0d0d0d;
+  border: none;
+  position: absolute;
+  top: 35px;
+  left: 30px;
+  transition: 0.3s;
+}
+
+.deleteButton:hover {
+  background: #f22613;
+  color: #f2f2f2;
+}

@@ -141,4 +141,26 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (id) {
+      const foundPokemon = await Pokemon.findByPk(id);
+      if (foundPokemon["createdInDb"]) {
+        await foundPokemon.destroy();
+        return res.send({
+          message: "Your pokemon has been successfully deleted",
+        });
+      } else {
+        return res.send({ message: "You can not delete an original pokemon" });
+      }
+    }
+  } catch (error) {
+    console.log({ error: error.message });
+    return res
+      .status(404)
+      .send({ message: "You can not delete an original pokemon" });
+  }
+});
+
 module.exports = router;

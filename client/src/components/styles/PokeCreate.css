@@ -47,15 +47,16 @@ form {
 }
 
 .left {
-  float: left;
   padding: 30px;
   margin-left: 20px;
+  position: fixed;
 }
 
 .right {
-  float: right;
   padding: 30px;
   margin-right: 50px;
+  position: fixed;
+  margin-left: 500px;
 }
 
 label {
@@ -110,7 +111,8 @@ select {
   color: #f22613;
   font-family: cursive;
   font-size: 14px;
-  text-align: center;
+  text-align: left;
+  position: fixed;
 }
 
 .options {
