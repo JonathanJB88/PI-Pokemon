@@ -147,7 +147,7 @@ const rootReducer = (state = initialState, action) => {
     case DELETE_POKEMON:
       return { ...state };
     case CLEAN_DETAIL:
-      return { ...state, pokeDetails: null };
+      return { ...state, pokeDetails: action.payload };
     default:
       return { ...state };
   }

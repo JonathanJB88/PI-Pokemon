@@ -1,6 +1,5 @@
 const axios = require("axios");
 const { Pokemon, Type } = require("../db.js");
-const fetch = require("node-fetch");
 
 const pokeApiInfo = async () => {
   try {
@@ -45,50 +44,6 @@ const pokeApiInfo = async () => {
     console.log({ error: error.message });
   }
 };
-
-// const pokeApiInfo = () => {
-//   try {
-//     let allPokeInfo = [];
-//     fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=5")
-//       .then((r) => r.json())
-//       .then((data) =>
-//         data.results.map((p) => fetch(p.url).then((r) => r.json()))
-//       )
-//       .then((data) =>
-//         Promise.all(data).then((allData) => {
-//           return allData.map((p) =>
-//             allPokeInfo.push({
-//               id: p.id,
-//               name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
-//               hp: p.stats.find((s) => s.stat.name === "hp").base_stat,
-//               attack: p.stats.find((s) => s.stat.name === "attack").base_stat,
-//               defense: p.stats.find((s) => s.stat.name === "defense").base_stat,
-//               speed: p.stats.find((s) => s.stat.name === "speed").base_stat,
-//               height: p.height,
-//               weight: p.weight,
-//               abilities: p.abilities.map(
-//                 (a) =>
-//                   a.ability.name.charAt(0).toUpperCase() +
-//                   a.ability.name.slice(1)
-//               ),
-//               types: p.types.map(
-//                 (t) =>
-//                   (t = {
-//                     name:
-//                       t.type.name.charAt(0).toUpperCase() +
-//                       t.type.name.slice(1),
-//                   })
-//               ),
-//               image: p.sprites.other.dream_world.front_default,
-//             })
-//           );
-//         })
-//       );
-//     return allPokeInfo;
-//   } catch (error) {
-//     console.log({ error: error.message });
-//   }
-// };
 
 const pokeDbInfo = async () => {
   try {

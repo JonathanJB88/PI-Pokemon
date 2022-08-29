@@ -27,6 +27,23 @@ export const getPokemons = () => {
   };
 };
 
+// export const getPokemons = () => {
+//   return (dispatch) => {
+//     try {
+//       fetch("http://localhost:3001/pokemons")
+//         .then((res) => res.json())
+//         .then((data) => {
+//           dispatch({
+//             type: GET_POKEMONS,
+//             payload: data,
+//           });
+//         });
+//     } catch (error) {
+//       console.log({ error: error.message });
+//     }
+//   };
+// };
+
 export const getTypes = () => {
   return async (dispatch) => {
     try {
@@ -132,6 +149,6 @@ export const deletePokemon = (id) => {
 export const cleanDetail = () => {
   return {
     type: CLEAN_DETAIL,
-    payload: {},
+    payload: null,
   };
 };

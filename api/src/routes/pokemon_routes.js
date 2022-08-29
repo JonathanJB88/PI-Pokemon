@@ -129,7 +129,6 @@ router.post("/", async (req, res) => {
           : "https://i.pinimg.com/originals/f9/7f/5c/f97f5c6510994f677877b08320475008.gif",
         createdInDb,
       });
-
       const dbTypes = await Type.findAll({
         where: { name: types },
       });
@@ -162,5 +161,60 @@ router.delete("/delete/:id", async (req, res) => {
       .send({ message: "You can not delete an original pokemon" });
   }
 });
+
+// router.put("/update/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const {
+//       hp,
+//       attack,
+//       defense,
+//       speed,
+//       height,
+//       weight,
+//       image,
+//       abilities,
+//       types,
+//     } = req.body;
+//     const arrAbilities = abilities?.split(", ");
+//     if (id) {
+//       const foundPokemon = await Pokemon.findByPk(id);
+//       if (foundPokemon["createdInDb"]) {
+//         await foundPokemon.update(
+//           {
+//             hp,
+//             attack,
+//             defense,
+//             speed,
+//             height,
+//             weight,
+//             abilities: arrAbilities.map(
+//               (a) => a.charAt(0).toUpperCase() + a.slice(1).toLowerCase()
+//             ),
+//             image: image
+//               ? image
+//               : "https://i.pinimg.com/originals/f9/7f/5c/f97f5c6510994f677877b08320475008.gif",
+//           },
+//           { where: { id: id } }
+//         );
+
+//         const dbTypes = await Type.findAll({
+//           where: { name: types },
+//         });
+//         await foundPokemon.setTypes(dbTypes);
+//         return res.send({
+//           message: "Your pokemon has been successfully updated",
+//         });
+//       } else {
+//         return res.send({ message: "You can not update an original pokemon" });
+//       }
+//     }
+//   } catch (error) {
+//     console.log({ error: error.message });
+//     return res
+//       .status(404)
+//       .send({ message: "You can not update an original pokemon" });
+//   }
+// });
 
 module.exports = router;
