@@ -64,76 +64,52 @@ router.post("/", async (req, res) => {
       return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
     };
 
+    const validateName = (name) => {
+      return /^[a-zA-Z]{1,10}$/.test(name);
+    };
+
+    const validateNumbers = (value) => {
+      return /^[1-9][0-9]?$|^100$/.test(value);
+    };
+
     const pokemons = await allPokeInfo();
     const exists = pokemons?.filter(
       (p) => p.name.toLowerCase() === name.toLowerCase()
     );
 
-    if (!name || !isNaN(name) || name.length < 1) {
+    if (!name || name.length < 1) {
       return res
         .status(404)
         .json({ error: "The pokemon name must be provided" });
+    } else if (!validateName(name)) {
+      return res.status(404).json({
+        error: "Only letters are accepted and 10 characters as maximum",
+      });
     } else if (image.length > 0 && !validateURL(image)) {
       return res.status(404).json({
         error: "The url format must be jpg, jpeg, png, webp, avif, gif or svg",
       });
-    } else if (
-      hp > 100 ||
-      hp < 0 ||
-      isNaN(hp) ||
-      hp.includes(".") ||
-      hp.includes(",")
-    ) {
+    } else if (!validateNumbers(hp)) {
       return res.status(404).json({
         error: "The hp field must be an integer number from 1 to 100",
       });
-    } else if (
-      attack > 100 ||
-      attack < 0 ||
-      isNaN(attack) ||
-      attack.includes(".") ||
-      attack.includes(",")
-    ) {
+    } else if (!validateNumbers(attack)) {
       return res.status(404).json({
         error: "The attack field must be an integer number from 1 to 100",
       });
-    } else if (
-      defense > 100 ||
-      defense < 0 ||
-      isNaN(defense) ||
-      defense.includes(".") ||
-      defense.includes(",")
-    ) {
+    } else if (!validateNumbers(defense)) {
       return res.status(404).json({
         error: "The defense field must be an integer number from 1 to 100",
       });
-    } else if (
-      speed > 100 ||
-      speed < 0 ||
-      isNaN(speed) ||
-      speed.includes(".") ||
-      speed.includes(",")
-    ) {
+    } else if (!validateNumbers(speed)) {
       return res.status(404).json({
         error: "The speed field must be an integer number from 1 to 100",
       });
-    } else if (
-      height > 100 ||
-      height < 0 ||
-      isNaN(height) ||
-      height.includes(".") ||
-      height.includes(",")
-    ) {
+    } else if (!validateNumbers(height)) {
       return res.status(404).json({
         error: "The height field must be an integer number from 1 to 100",
       });
-    } else if (
-      weight > 100 ||
-      weight < 0 ||
-      isNaN(weight) ||
-      weight.includes(".") ||
-      weight.includes(",")
-    ) {
+    } else if (!validateNumbers(weight)) {
       return res.status(404).json({
         error: "The weight field must be an integer number from 1 to 100",
       });

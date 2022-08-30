@@ -131,7 +131,7 @@ const Home = () => {
                 <option value="title" selected={selected} disabled>
                   Order by: Attack
                 </option>
-                <option value="powerfull">Powerfull</option>
+                <option value="powerfull">Powerful</option>
                 <option value="weak">Weak</option>
               </select>
             </li>
