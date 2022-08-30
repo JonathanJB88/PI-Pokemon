@@ -11,6 +11,7 @@ import {
   ERROR_404,
   DELETE_POKEMON,
   CLEAN_DETAIL,
+  CLEAN_POKEMONS,
 } from "./action_types.js";
 
 export const getPokemons = () => {
@@ -149,6 +150,13 @@ export const deletePokemon = (id) => {
 export const cleanDetail = () => {
   return {
     type: CLEAN_DETAIL,
+    payload: null,
+  };
+};
+
+export const cleanPokemons = () => {
+  return {
+    type: CLEAN_POKEMONS,
     payload: null,
   };
 };

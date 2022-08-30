@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import {
   cleanDetail,
+  cleanPokemons,
   deletePokemon,
   getPokeDetails,
 } from "../actions/index.js";
@@ -30,6 +31,7 @@ const PokeDetails = () => {
     if (pokemon["createdInDb"]) {
       dispatch(deletePokemon(id));
       dispatch(cleanDetail());
+      dispatch(cleanPokemons());
       alert("Your pokemon has been successfully deleted");
       history.push("/home");
     } else {

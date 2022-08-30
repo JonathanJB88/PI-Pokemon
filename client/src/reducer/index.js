@@ -11,6 +11,7 @@ import {
   ERROR_404,
   DELETE_POKEMON,
   CLEAN_DETAIL,
+  CLEAN_POKEMONS,
 } from ".././actions/action_types.js";
 
 const initialState = {
@@ -147,7 +148,9 @@ const rootReducer = (state = initialState, action) => {
     case DELETE_POKEMON:
       return { ...state };
     case CLEAN_DETAIL:
-      return { ...state, pokeDetails: action.payload };
+      return { ...state, pokeDetails: action.payload, error: null };
+    case CLEAN_POKEMONS:
+      return { ...state, pokemons: [] };
     default:
       return { ...state };
   }

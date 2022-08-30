@@ -5,7 +5,7 @@ import { pokemonByName } from "../actions/index.js";
 import "./styles/SearchBar.css";
 import SearchIcon from "./PokeImages/Search_icon.png";
 
-const SearchBar = ({ setInput, setPage }) => {
+const SearchBar = ({ setInput, setPage, setSelected }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -21,6 +21,7 @@ const SearchBar = ({ setInput, setPage }) => {
       setName("");
       setInput(1);
       setPage(1);
+      setSelected(true);
     }
   };
   const onKeyDown = (e) => {
@@ -31,6 +32,7 @@ const SearchBar = ({ setInput, setPage }) => {
         setName("");
         setInput(1);
         setPage(1);
+        setSelected(true);
       }
     }
   };

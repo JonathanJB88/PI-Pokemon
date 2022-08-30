@@ -104,7 +104,11 @@ const Home = () => {
               </Link>
             </li>
             <li>
-              <SearchBar setInput={setInput} setPage={setPage} />
+              <SearchBar
+                setInput={setInput}
+                setPage={setPage}
+                setSelected={setSelected}
+              />
             </li>
           </ul>
         </div>
