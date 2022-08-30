@@ -77,29 +77,65 @@ router.post("/", async (req, res) => {
       return res.status(404).json({
         error: "The url format must be jpg, jpeg, png, webp, avif, gif or svg",
       });
-    } else if (hp > 100 || hp < 0 || isNaN(hp)) {
+    } else if (
+      hp > 100 ||
+      hp < 0 ||
+      isNaN(hp) ||
+      hp.includes(".") ||
+      hp.includes(",")
+    ) {
       return res.status(404).json({
-        error: "The hp field must be a number from 1 to 100",
+        error: "The hp field must be an integer number from 1 to 100",
       });
-    } else if (attack > 100 || attack < 0 || isNaN(attack)) {
+    } else if (
+      attack > 100 ||
+      attack < 0 ||
+      isNaN(attack) ||
+      attack.includes(".") ||
+      attack.includes(",")
+    ) {
       return res.status(404).json({
-        error: "The attack field must be a number from 1 to 100",
+        error: "The attack field must be an integer number from 1 to 100",
       });
-    } else if (defense > 100 || defense < 0 || isNaN(defense)) {
+    } else if (
+      defense > 100 ||
+      defense < 0 ||
+      isNaN(defense) ||
+      defense.includes(".") ||
+      defense.includes(",")
+    ) {
       return res.status(404).json({
-        error: "The defense field must be a number from 1 to 100",
+        error: "The defense field must be an integer number from 1 to 100",
       });
-    } else if (speed > 100 || speed < 0 || isNaN(speed)) {
+    } else if (
+      speed > 100 ||
+      speed < 0 ||
+      isNaN(speed) ||
+      speed.includes(".") ||
+      speed.includes(",")
+    ) {
       return res.status(404).json({
-        error: "The speed field must be a number from 1 to 100",
+        error: "The speed field must be an integer number from 1 to 100",
       });
-    } else if (height > 100 || height < 0 || isNaN(height)) {
+    } else if (
+      height > 100 ||
+      height < 0 ||
+      isNaN(height) ||
+      height.includes(".") ||
+      height.includes(",")
+    ) {
       return res.status(404).json({
-        error: "The height field must be a number from 1 to 100",
+        error: "The height field must be an integer number from 1 to 100",
       });
-    } else if (weight > 100 || weight < 0 || isNaN(weight)) {
+    } else if (
+      weight > 100 ||
+      weight < 0 ||
+      isNaN(weight) ||
+      weight.includes(".") ||
+      weight.includes(",")
+    ) {
       return res.status(404).json({
-        error: "The weight field must be a number from 1 to 100",
+        error: "The weight field must be an integer number from 1 to 100",
       });
     } else if (types.length === 0 || types.length > 3) {
       return res.status(404).json({
