@@ -106,7 +106,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_ATTACK:
       const thePokemons = state.pokemons;
       let attackOrder =
-        action.payload === "powerfull"
+        action.payload === "powerful"
           ? thePokemons.sort((a, z) => {
               if (a.attack > z.attack) {
                 return -1;
@@ -150,7 +150,7 @@ const rootReducer = (state = initialState, action) => {
     case CLEAN_DETAIL:
       return { ...state, pokeDetails: action.payload, error: null };
     case CLEAN_POKEMONS:
-      return { ...state, pokemons: [] };
+      return { ...state, pokemons: action.payload };
     default:
       return { ...state };
   }

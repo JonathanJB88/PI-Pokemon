@@ -72,6 +72,10 @@ router.post("/", async (req, res) => {
       return /^[1-9][0-9]?$|^100$/.test(value);
     };
 
+    const validateAbilities = (value) => {
+      return /^[a-zA-Z,\s]*$/g.test(value);
+    };
+
     const pokemons = await allPokeInfo();
     const exists = pokemons?.filter(
       (p) => p.name.toLowerCase() === name.toLowerCase()
@@ -117,10 +121,11 @@ router.post("/", async (req, res) => {
       return res.status(404).json({
         error: "The pokemon types must be from 1 to 3",
       });
-    } else if (!isNaN(abilities) || abilities.length <= 2) {
-      return res
-        .status(404)
-        .json({ error: "Please, type just the abilities of your pokemon" });
+    } else if (!validateAbilities(abilities) || abilities.length <= 2) {
+      return res.status(404).json({
+        error:
+          "Please, type the abilities (only letters, spaces and commas allowed)",
+      });
     } else if (exists.length) {
       console.log({ error: "This pokemons already exists!" });
       return res.status(404).json({ error: "This pokemons already exists!" });
@@ -214,18 +219,18 @@ router.delete("/delete/:id", async (req, res) => {
 //           where: { name: types },
 //         });
 //         await foundPokemon.setTypes(dbTypes);
-//         return res.send({
+//         return res.json({
 //           message: "Your pokemon has been successfully updated",
 //         });
 //       } else {
-//         return res.send({ message: "You can not update an original pokemon" });
+//         return res.json({ message: "You can not update an original pokemon" });
 //       }
 //     }
 //   } catch (error) {
 //     console.log({ error: error.message });
 //     return res
 //       .status(404)
-//       .send({ message: "You can not update an original pokemon" });
+//       .json({ message: "You can not update an original pokemon" });
 //   }
 // });
 

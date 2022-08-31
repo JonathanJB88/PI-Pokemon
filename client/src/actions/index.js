@@ -157,6 +157,6 @@ export const cleanDetail = () => {
 export const cleanPokemons = () => {
   return {
     type: CLEAN_POKEMONS,
-    payload: null,
+    payload: [],
   };
 };

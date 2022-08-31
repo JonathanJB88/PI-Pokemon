@@ -10,6 +10,10 @@ const validateNumbers = (value) => {
   return /^[1-9][0-9]?$|^100$/.test(value);
 };
 
+const validateAbilities = (value) => {
+  return /^[a-zA-Z,\s]*$/g.test(value);
+};
+
 export const validate = (input, pokemons) => {
   let errors = {};
   if (!input.name || input.name.length < 1) {
@@ -20,8 +24,12 @@ export const validate = (input, pokemons) => {
     pokemons.find((p) => p.name.toLowerCase() === input.name.toLowerCase())
   ) {
     errors.name = "There is already a pokemon with that name";
-  } else if (!isNaN(input.abilities) || input.abilities.length <= 2) {
-    errors.abilities = "Please, type the abilities of your pokemon";
+  } else if (
+    !validateAbilities(input.abilities) ||
+    input.abilities.length <= 2
+  ) {
+    errors.abilities =
+      "Please, type the abilities (only letters, spaces and commas allowed)";
   } else if (input.image.length > 0 && !validateURL(input.image)) {
     errors.image = "Please, insert a jpg, jpeg, png, webp, avif, gif, svg url";
   } else if (!validateNumbers(input.hp)) {
