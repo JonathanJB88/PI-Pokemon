@@ -168,7 +168,9 @@ router.delete("/delete/:id", async (req, res) => {
           message: "Your pokemon has been successfully deleted",
         });
       } else {
-        return res.send({ message: "You can not delete an original pokemon" });
+        return res
+          .status(404)
+          .json({ message: "You can not delete an original pokemon" });
       }
     }
   } catch (error) {
@@ -178,6 +180,8 @@ router.delete("/delete/:id", async (req, res) => {
       .send({ message: "You can not delete an original pokemon" });
   }
 });
+
+module.exports = router;
 
 // router.put("/update/:id", async (req, res) => {
 //   try {
@@ -233,5 +237,3 @@ router.delete("/delete/:id", async (req, res) => {
 //       .json({ message: "You can not update an original pokemon" });
 //   }
 // });
-
-module.exports = router;
