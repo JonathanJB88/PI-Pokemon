@@ -130,12 +130,11 @@ const rootReducer = (state = initialState, action) => {
         pokemons: attackOrder,
       };
     case GET_POKEMON_BY_NAME:
-      let fullPoke = state.allPokemons;
-      let onePoke = fullPoke?.filter((p) => p.name === action.payload[0].name);
       return {
         ...state,
-        pokemons: onePoke,
+        pokemons: action.payload,
       };
+
     case GET_POKE_DETAILS:
       return {
         ...state,

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { pokemonByName } from "../actions/index.js";
 import "./styles/SearchBar.css";
 import SearchIcon from "./PokeImages/Search_icon.png";
