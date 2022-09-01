@@ -28,23 +28,6 @@ export const getPokemons = () => {
   };
 };
 
-// export const getPokemons = () => {
-//   return (dispatch) => {
-//     try {
-//       fetch("http://localhost:3001/pokemons")
-//         .then((res) => res.json())
-//         .then((data) => {
-//           dispatch({
-//             type: GET_POKEMONS,
-//             payload: data,
-//           });
-//         });
-//     } catch (error) {
-//       console.log({ error: error.message });
-//     }
-//   };
-// };
-
 export const getTypes = () => {
   return async (dispatch) => {
     try {
@@ -61,18 +44,11 @@ export const getTypes = () => {
 
 export const pokemonByName = (name) => {
   return async (dispatch) => {
-    try {
-      var json = await axios.get(`/pokemons?name=${name}`);
-      return dispatch({
-        type: GET_POKEMON_BY_NAME,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log({ error: error.message });
-      return alert(
-        "There is not a pokemon with that name, try again with a new one"
-      );
-    }
+    var json = await axios.get(`/pokemons?name=${name}`);
+    return dispatch({
+      type: GET_POKEMON_BY_NAME,
+      payload: json.data,
+    });
   };
 };
 

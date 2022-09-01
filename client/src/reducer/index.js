@@ -130,10 +130,19 @@ const rootReducer = (state = initialState, action) => {
         pokemons: attackOrder,
       };
     case GET_POKEMON_BY_NAME:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
+      if (action.payload.length === 0) {
+        return {
+          ...state,
+          pokemons: action.payload,
+          error: { message: "Not matches found" },
+        };
+      } else {
+        return {
+          ...state,
+          pokemons: action.payload,
+          error: null,
+        };
+      }
 
     case GET_POKE_DETAILS:
       return {

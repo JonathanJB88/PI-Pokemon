@@ -5,18 +5,17 @@ import "./styles/Paging.css";
 
 const Paging = ({ page, setPage, max, setInput, input }) => {
   const nextPage = () => {
-    setInput(parseInt(input) + 1);
+    setInput(parseInt(page) + 1);
     setPage(parseInt(page) + 1);
   };
 
   const previousPage = () => {
-    setInput(parseInt(input) - 1);
+    setInput(parseInt(page) - 1);
     setPage(parseInt(page) - 1);
   };
 
   const onKeyDown = (e) => {
     if (e.keyCode === 13) {
-      setPage(parseInt(e.target.value));
       if (
         parseInt(e.target.value) < 1 ||
         parseInt(e.target.value) > max ||

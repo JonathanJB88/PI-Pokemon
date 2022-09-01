@@ -12,11 +12,7 @@ router.get("/", async (req, res) => {
       const pokesByName = pokemons?.filter(
         (p) => p.name.toLowerCase() === name.toLowerCase()
       );
-      pokesByName.length > 0
-        ? res.status(200).json(pokesByName)
-        : res
-            .status(404)
-            .json({ error: "There is not a pokemon with that name" });
+      pokesByName.length > 0 ? res.status(200).json(pokesByName) : res.json([]);
     } else {
       res.status(200).json(pokemons);
     }
