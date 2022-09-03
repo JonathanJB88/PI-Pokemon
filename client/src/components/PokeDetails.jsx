@@ -21,6 +21,7 @@ const PokeDetails = () => {
 
   useEffect(() => {
     dispatch(getPokeDetails(id));
+    dispatch(cleanPokemons());
   }, [dispatch, id]);
 
   const handleClick = () => {
@@ -34,6 +35,14 @@ const PokeDetails = () => {
       dispatch(cleanPokemons());
       alert("Your pokemon has been successfully deleted");
       history.push("/home");
+    } else {
+      alert("You can not delete an original pokemon");
+    }
+  };
+
+  const clickUpdate = () => {
+    if (pokemon["createdInDb"]) {
+      history.push(`/pokeUpdate/${id}`);
     } else {
       alert("You can not delete an original pokemon");
     }
@@ -82,6 +91,14 @@ const PokeDetails = () => {
                     onClick={() => handleDelete()}
                   >
                     DELETE
+                  </button>
+                </div>
+                <div className="update-container">
+                  <button
+                    className="updateButton"
+                    onClick={() => clickUpdate()}
+                  >
+                    UPDATE
                   </button>
                 </div>
               </div>

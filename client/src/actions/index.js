@@ -12,6 +12,7 @@ import {
   DELETE_POKEMON,
   CLEAN_DETAIL,
   CLEAN_POKEMONS,
+  UPDATE_POKEMON,
 } from "./action_types.js";
 
 export const getPokemons = () => {
@@ -115,6 +116,20 @@ export const deletePokemon = (id) => {
       const json = await axios.delete(`pokemons/delete/${id}`);
       return dispatch({
         type: DELETE_POKEMON,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log({ error: error.message });
+    }
+  };
+};
+
+export const updatePokemon = (id, payload) => {
+  return async (dispatch) => {
+    try {
+      var json = await axios.put(`pokemons/update/${id}`, payload);
+      return dispatch({
+        type: UPDATE_POKEMON,
         payload: json.data,
       });
     } catch (error) {

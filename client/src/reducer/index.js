@@ -12,6 +12,7 @@ import {
   DELETE_POKEMON,
   CLEAN_DETAIL,
   CLEAN_POKEMONS,
+  UPDATE_POKEMON,
 } from ".././actions/action_types.js";
 
 const initialState = {
@@ -154,6 +155,8 @@ const rootReducer = (state = initialState, action) => {
     case CREATE_POKEMON:
       return { ...state };
     case DELETE_POKEMON:
+      return { ...state };
+    case UPDATE_POKEMON:
       return { ...state };
     case CLEAN_DETAIL:
       return { ...state, pokeDetails: action.payload, error: null };

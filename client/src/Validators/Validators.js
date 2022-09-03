@@ -55,3 +55,26 @@ export const valSelect = (input) => {
   }
   return errorSelect;
 };
+
+export const valUpdate = (input) => {
+  let errors = {};
+  if (!validateAbilities(input.abilities) || input.abilities.length <= 2) {
+    errors.abilities =
+      "Please, type the abilities (only letters, spaces and commas allowed)";
+  } else if (input.image.length > 0 && !validateURL(input.image)) {
+    errors.image = "Please, insert a jpg, jpeg, png, webp, avif, gif, svg url";
+  } else if (!validateNumbers(input.hp)) {
+    errors.hp = "Please, insert a valid integer number from 1 to 100";
+  } else if (!validateNumbers(input.attack)) {
+    errors.attack = "Please, insert a valid integer number from 1 to 100";
+  } else if (!validateNumbers(input.defense)) {
+    errors.defense = "Please, insert a valid integer number from 1 to 100";
+  } else if (!validateNumbers(input.speed)) {
+    errors.speed = "Please, insert a valid integer number from 1 to 100";
+  } else if (!validateNumbers(input.height)) {
+    errors.height = "Please, insert a valid integer number from 1 to 100";
+  } else if (!validateNumbers(input.weight)) {
+    errors.weight = "Please insert a valid integer number from 1 to 100";
+  }
+  return errors;
+};
