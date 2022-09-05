@@ -72,6 +72,28 @@
   left: 2px;
 }
 
+.icons {
+  width: 25px;
+  height: 25px;
+  padding-left: 15px;
+}
+
+.byJon {
+  color: #f2bf27;
+  font-family: fantasy;
+  letter-spacing: 3px;
+}
+
+.icons-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 600px;
+  margin-left: 30px;
+}
+
 @media (min-width: 768px) {
   .button {
     padding: 0.75rem 3rem;
