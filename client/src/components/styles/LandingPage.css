@@ -4,28 +4,18 @@
   background-position: center;
   height: 100vh;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .logo-landing {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
   width: 400px;
-  height: 400px;
-  margin-top: -75px;
-  margin-left: 15px;
-}
-
-.divbutton {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-top: 570px;
-  margin-left: 1230px;
+  margin-top: 20px;
 }
 
 .button {
@@ -45,7 +35,6 @@
   text-align: center;
   width: 100%;
   max-width: 100px;
-  position: relative;
   cursor: pointer;
   transform: rotate(-2deg);
   user-select: none;
@@ -84,19 +73,34 @@
   letter-spacing: 3px;
 }
 
-.icons-container {
-  position: absolute;
+.foot-container {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-top: 600px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 27%;
+  height: 50%;
 }
 
-@media (min-width: 768px) {
-  .button {
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
+@media screen and (max-width: 800px) {
+  .logo-landing {
+    width: 200px;
+    margin-top: 30px;
+  }
+
+  .foot-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1px;
+    margin-right: 30px;
+    margin-top: 75%;
+    height: 100%;
+  }
+
+  .byJon {
+    padding-top: 10px;
+    -webkit-text-stroke: 1px #0d0d0d;
   }
 }

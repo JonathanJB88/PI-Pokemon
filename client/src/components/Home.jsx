@@ -77,95 +77,98 @@ const Home = () => {
 
   return (
     <div className="bg-home">
-      <div className="logo-home">
+      <div className="max-box">
         <img className="logo" src={logo} alt="Pokeimage not found" />
-      </div>
-      <div className="menu-container">
-        <div id="menu">
-          <ul>
-            <li>
-              <Link className="Link" to={"/pokeCreate"}>
-                <button className="home-buttons">Create Pokemon</button>
-              </Link>
-            </li>
-            <li>
-              <button
-                className="home-buttons"
-                onClick={(e) => {
-                  handleAllPokes(e);
-                }}
-              >
-                Load all Pokemons
-              </button>
-            </li>
-            <li>
-              <Link className="Link" to={"/"}>
-                <button className="home-buttons">Landing Page</button>
-              </Link>
-            </li>
-            <li>
-              <SearchBar
-                setInput={setInput}
-                setPage={setPage}
-                setSelected={setSelected}
-              />
-            </li>
-          </ul>
-        </div>
-        <div id="Order-filter">
-          <ul>
-            <li>
-              <select defaultValue="title" onChange={(e) => handleAbcOrder(e)}>
-                <option value="title" selected={selected} disabled>
-                  Order by: alphabet
-                </option>
-                <option value="asc">A to Z</option>
-                <option value="desc">Z to A</option>
-              </select>
-            </li>
-            <li>
-              <select
-                defaultValue="title"
-                onChange={(e) => handleAttackOrder(e)}
-              >
-                <option value="title" selected={selected} disabled>
-                  Order by: Attack
-                </option>
-                <option value="powerful">Powerful</option>
-                <option value="weak">Weak</option>
-              </select>
-            </li>
-            <li>
-              <select
-                defaultValue="title"
-                onChange={(e) => handleTypeOptions(e)}
-              >
-                <option value="title" selected={selected} disabled>
-                  Filter by: Type
-                </option>
-                <option value="all">All</option>
-                {allTypes?.map((t) => {
-                  return (
-                    <option value={t.name} key={t.id}>
-                      {t.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </li>
-            <li>
-              <select
-                defaultValue="title"
-                onChange={(e) => handleCreatedOptions(e)}
-              >
-                <option value="title" selected={selected} disabled>
-                  Filter by: Existing or Created
-                </option>
-                <option value="api">Existing</option>
-                <option value="created">Created</option>
-              </select>
-            </li>
-          </ul>
+        <div className="menu-container">
+          <div id="menu">
+            <ul>
+              <li>
+                <Link className="Link" to={"/pokeCreate"}>
+                  <button className="home-buttons">Create Pokemon</button>
+                </Link>
+              </li>
+              <li>
+                <button
+                  className="home-buttons"
+                  onClick={(e) => {
+                    handleAllPokes(e);
+                  }}
+                >
+                  Load all Pokemons
+                </button>
+              </li>
+              <li>
+                <Link className="Link" to={"/"}>
+                  <button className="home-buttons">Landing Page</button>
+                </Link>
+              </li>
+              <li>
+                <SearchBar
+                  setInput={setInput}
+                  setPage={setPage}
+                  setSelected={setSelected}
+                />
+              </li>
+            </ul>
+          </div>
+          <div id="Order-filter">
+            <ul>
+              <li>
+                <select
+                  defaultValue="title"
+                  onChange={(e) => handleAbcOrder(e)}
+                >
+                  <option value="title" selected={selected} disabled>
+                    Order by: alphabet
+                  </option>
+                  <option value="asc">A to Z</option>
+                  <option value="desc">Z to A</option>
+                </select>
+              </li>
+              <li>
+                <select
+                  defaultValue="title"
+                  onChange={(e) => handleAttackOrder(e)}
+                >
+                  <option value="title" selected={selected} disabled>
+                    Order by: Attack
+                  </option>
+                  <option value="powerful">Powerful</option>
+                  <option value="weak">Weak</option>
+                </select>
+              </li>
+              <li>
+                <select
+                  defaultValue="title"
+                  onChange={(e) => handleTypeOptions(e)}
+                >
+                  <option value="title" selected={selected} disabled>
+                    Filter by: Type
+                  </option>
+                  <option value="all">All</option>
+                  {allTypes?.map((t) => {
+                    return (
+                      <option value={t.name} key={t.id}>
+                        {t.name}
+                      </option>
+                    );
+                  })}
+                </select>
+              </li>
+              <li>
+                <select
+                  defaultValue="title"
+                  onChange={(e) => handleCreatedOptions(e)}
+                >
+                  <option value="title" selected={selected} disabled>
+                    Filter by: Existing or Created
+                  </option>
+                  <option value="api">Existing</option>
+                  <option value="created">Created</option>
+                </select>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className="grid-container">
