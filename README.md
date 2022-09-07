@@ -12,8 +12,6 @@ This project is a SPA that consumes information from the pokemon API: https://po
 
 <img src="./Screenshot_readme.png"/>
 
-![image](/PI-Pokemon-main/Screenshot_readme.png)
-
 - Link to deployment: https://pokemon-app-by-jonathanbracho.vercel.app/
 - Link to demo video: https://vimeo.com/747427349
 
