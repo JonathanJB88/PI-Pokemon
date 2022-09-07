@@ -1,6 +1,6 @@
 # Individual Project - Pokemon App
 
-<img height="100px" src="PI-Pokemon-main\client\src\components\PokeImages\Logo.png"/>
+<img height="100px" src="./Logo.png"/>
 
 This project is a SPA that consumes information from the pokemon API: https://pokeapi.co/ and allows you to create, update and delete new pokemon as well as search by the exact name for any pokemon, filter by type or origin (database or API), sort alphabetically or by attack points.
 
@@ -8,9 +8,11 @@ This project is a SPA that consumes information from the pokemon API: https://po
 
 - The styles have been developed with pure CSS and responsive design; it also has a pagination with previous, next and input buttons showing a maximum of twelve pokemons per page.
 
-![image](PI-Pokemon-main\client\src\components\PokeImages\Screenshot2_readme.png)
+![image](/PI-Pokemon-main/Screenshot2_readme.png)
 
-![image](PI-Pokemon-main\client\src\components\PokeImages\Screenshot_readme.png)
+![image](/PI-Pokemon-main/Screenshot_readme.png)
 
 - Link to deployment: https://pokemon-app-by-jonathanbracho.vercel.app/
 - Link to demo video: https://vimeo.com/747427349
+
+<img height="200px" width="300px" src="./pokemon.png"/>
