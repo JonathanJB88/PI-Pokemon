@@ -1,11 +1,11 @@
-.bg-create {
+/* .bg-update {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 }
 
-.bg-create::after {
+.bg-update::after {
   content: "";
   background: url("../PokeImages/Bg-create.png") #f7d676;
   background-repeat: no-repeat;
@@ -15,9 +15,8 @@
   left: 0;
   bottom: 0;
   right: 0;
-  position: absolute;
   z-index: -1;
-}
+} */
 
 h1 {
   width: 900px;
@@ -258,4 +257,87 @@ select {
 .cancel-button:hover {
   background: #f22613;
   color: #f2f2f2;
+}
+
+@media screen and (max-width: 1000px) {
+  .upmain {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: auto;
+  }
+
+  h1 {
+    width: 70%;
+  }
+
+  .upleft {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .upright {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .div-create-button {
+    margin-top: 0;
+    margin-bottom: 3%;
+  }
+
+  .div-home-button {
+    margin-left: 65%;
+    margin-top: 4%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .cancel-container {
+    margin-left: 50px;
+    margin-top: -125px;
+  }
+  .pokemonTitle {
+    color: #f22613;
+    font-family: fantasy;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-shadow: #0d0d0d;
+    padding-bottom: 10px;
+  }
+  .div-create-button {
+    margin-left: 2%;
+  }
+  .div-home-button {
+    margin-left: 55%;
+    margin-top: -3%;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .upleft {
+    padding: 2px;
+  }
+  .upright {
+    padding: 2px;
+  }
+
+  .upoptions {
+    font-size: 10px;
+  }
+  .upoptions-delete {
+    font-size: 10px;
+  }
+  .uperrors {
+    font-size: 10px;
+  }
+  .upmain {
+    height: 80%;
+  }
+  .input-update {
+    padding: 0;
+    margin: 0%;
+  }
 }
