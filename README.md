@@ -8,7 +8,7 @@ This project is a SPA that consumes information from the pokemon API: https://po
 
 - The styles have been developed with pure CSS and responsive design; it also has a pagination with previous, next and input buttons showing a maximum of twelve pokemons per page.
 
-![image](/PI-Pokemon-main/Screenshot2_readme.png)
+![image](<file:///C:/Users/Jonaj/Dropbox/Mi%20PC%20(LAPTOP-TJ307CKU)/Downloads/Screenshot2_readme.webp>)
 
 ![image](/PI-Pokemon-main/Screenshot_readme.png)
 
