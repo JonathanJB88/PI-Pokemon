@@ -13,8 +13,10 @@ const Error404 = () => {
   };
 
   return (
-    <div>
-      <img className="errorImage" src={error404} alt="Pokeimage not found" />
+    <div className="container-error">
+      <div>
+        <img className="errorImage" src={error404} alt="Pokeimage not found" />
+      </div>
       <div className="divErrorButton">
         <Link className="Link" to="/home">
           <button className="errorButton" onClick={(e) => handleClick(e)}>

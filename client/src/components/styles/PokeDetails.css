@@ -19,7 +19,7 @@
 .pokemon-card-container {
   background: linear-gradient(to right, #f77b6f, #f22613);
   width: 350px;
-  height: auto;
+  height: fit-content;
   margin-top: 40px;
   margin-left: 250px;
   padding: 15px;
@@ -86,10 +86,9 @@
 }
 
 .div-button-details {
-  position: absolute;
   display: flex;
-  margin-left: 1140px;
-  margin-top: -50px;
+  margin-left: 85%;
+  margin-top: -2%;
 }
 
 .button-details {
@@ -133,13 +132,6 @@
 .button-details:hover:after {
   bottom: 2px;
   left: 2px;
-}
-
-@media (min-width: 768px) {
-  .button-details {
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
-  }
 }
 
 .delete-container {
@@ -192,4 +184,26 @@
 .updateButton:hover {
   background: #f22613;
   color: #f2f2f2;
+}
+
+@media screen and (max-width: 1300px) {
+  .div-button-details {
+    margin-left: 30%;
+    margin-top: 10%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .background-details {
+    background: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: -62%;
+  }
+
+  .div-button-details {
+    margin-top: 15%;
+    margin-left: 60%;
+  }
 }

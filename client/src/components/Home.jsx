@@ -171,14 +171,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="grid-container">
-        {error ? (
-          <div className="error-container">
-            <img src={Psyduck} alt="Not Found" />
-            <h1>No matches found, try again or load all pokemons!</h1>
-          </div>
-        ) : allPokemons.length > 0 ? (
-          allPokemons
+      {error ? (
+        <div className="error-container">
+          <img src={Psyduck} alt="Not Found" />
+          <h2>No matches found, try again or load all pokemons!</h2>
+        </div>
+      ) : allPokemons.length > 0 ? (
+        <div className="grid-container">
+          {allPokemons
             .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
             .map((p) => {
               return (
@@ -191,13 +191,13 @@ const Home = () => {
                   />
                 </Fragment>
               );
-            })
-        ) : (
-          <div>
-            <Loading />
-          </div>
-        )}
-      </div>
+            })}
+        </div>
+      ) : (
+        <div>
+          <Loading />
+        </div>
+      )}
       <div className="pag-container">
         <Paging
           page={page}

@@ -68,7 +68,7 @@ const PokeDetails = () => {
                 />
               </div>
               <div className="content">
-                <h1 className="pokemon-name">{pokemon.name}</h1>
+                <h3 className="pokemon-name">{pokemon.name}</h3>
                 <span className="pokemon-type">
                   {pokemon.types?.map((t) => "  " + t.name + "  ")}
                 </span>
@@ -84,7 +84,7 @@ const PokeDetails = () => {
                     Abilities: {pokemon.abilities?.map((a) => "  " + a + "  ")}
                   </p>
                 </div>
-                <h1 className="pokemon-details">Pokemon Details</h1>
+                <h4 className="pokemon-details">Pokemon Details</h4>
                 <div className="delete-container">
                   <button
                     className="deleteButton"

@@ -1,14 +1,18 @@
+.container-error {
+  display: flex;
+  flex-direction: column;
+}
+
 .errorImage {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 60%;
 }
 
 .divErrorButton {
-  position: absolute;
   display: flex;
-  margin-left: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .errorButton {
@@ -54,9 +58,14 @@
   left: 2px;
 }
 
-@media (min-width: 768px) {
-  .errorButton {
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
+@media screen and (max-width: 1200px) {
+  .errorImage {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .errorImage {
+    margin-top: 50%;
   }
 }

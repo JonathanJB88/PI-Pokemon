@@ -20,6 +20,7 @@ body {
 .max-box {
   display: flex;
   justify-content: space-between;
+  margin-top: 1%;
 }
 
 .grid-container {
@@ -53,7 +54,6 @@ body {
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
-  align-items: flex-end;
   margin-right: 2%;
 }
 
@@ -116,34 +116,41 @@ body {
 .error-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: 550px;
-  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.error-container h1 {
+.error-container img {
+  width: 25vw;
+  display: flex;
+}
+
+.error-container h2 {
+  display: flex;
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   width: 140px;
+  white-space: pre;
+  justify-content: center;
   text-align: center;
-  white-space: nowrap;
   padding-bottom: 13px;
-  margin-left: -170px;
   padding-top: 50px;
   font-family: fantasy;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
-.error-container h1:before {
+/* .error-container h1:before {
   background-color: #f22613;
   content: "";
   display: block;
   height: 3px;
   width: 75px;
   margin-bottom: 5px;
-}
+} */
 
-.error-container h1:after {
+/* .error-container h1:after {
   background-color: #f22613;
   content: "";
   display: block;
@@ -154,33 +161,46 @@ body {
   width: 75px;
   margin-bottom: 85px;
   margin-right: 310px;
-}
+} */
 
 @media screen and (max-width: 1220px) {
-  .logo {
-    width: 200px;
-    height: 100px;
-    margin-top: 5%;
+  .max-box {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
   }
 
-  #menu ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .logo {
+    margin-left: 0%;
   }
-  #menu ul li .home-buttons {
-    padding: 20px 20px;
-    font-size: 20px;
-  }
-  #Order-filter ul {
+
+  #Order-filter {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
   }
 
   .grid-container {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
+  }
+
+  .error-container h1 {
+    white-space: normal;
+    font-size: 16px;
+  }
+
+  .error-container img {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   }
 }

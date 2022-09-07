@@ -5,12 +5,14 @@ const pokeApiInfo = async () => {
   try {
     let allPokeInfo = [];
     const urlPoke1 = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=126"
+      // "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=126"
+      "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5"
     );
     let urlPromises1 = urlPoke1.data.results?.map((p) => axios.get(p.url));
 
     const urlPoke2 = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon/?offset=126&limit=125"
+      // "https://pokeapi.co/api/v2/pokemon/?offset=126&limit=125"
+      "https://pokeapi.co/api/v2/pokemon/?offset=5&limit=10"
     );
     let urlPromises2 = urlPoke2.data.results?.map((p) => axios.get(p.url));
 

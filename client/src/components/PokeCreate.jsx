@@ -121,9 +121,7 @@ const PokeCreate = () => {
 
   return (
     <div className="bg-create">
-      <div className="reg-form">
-        <h1>Let's create a new Pokemon</h1>
-      </div>
+      <h1>Let's create a new Pokemon</h1>
       <div className="main">
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="left">

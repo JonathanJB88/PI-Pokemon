@@ -1,5 +1,4 @@
 .bg-create {
-  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -20,16 +19,15 @@
   z-index: -1;
 }
 
-.reg-form {
+h1 {
   width: 900px;
   background-color: rgba(60, 95, 166, 0.6);
-  color: #0d0d0d;
-  padding: 10px, 0px, 10px, 0px;
   text-align: center;
   border-radius: 15px 15px 0px 0px;
+  margin: auto;
   margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  color: #0d0d0d;
+  padding: 10px, 0px, 10px, 0px;
 }
 
 .upmain {
@@ -42,7 +40,7 @@
 
 form {
   padding-top: 5px;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
 }
 
@@ -130,9 +128,8 @@ select {
 }
 
 .div-update-button {
-  position: absolute;
-  margin-left: 170px;
-  margin-top: 450px;
+  margin-left: 20%;
+  margin-top: 50%;
 }
 
 .update-button {
@@ -180,16 +177,8 @@ select {
   bottom: 2px;
   left: 2px;
 }
-
-@media (min-width: 768px) {
-  .update-button {
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
-  }
-}
-
+/* 
 .div-home-button {
-  position: absolute;
   margin-left: 1160px;
   margin-top: -100px;
 }
@@ -234,18 +223,12 @@ select {
 .home-button:hover:after {
   bottom: 2px;
   left: 2px;
-}
-
-@media (min-width: 768px) {
-  .home-button {
-    padding: 0.75rem 3rem;
-    font-size: 1.25rem;
-  }
-}
+} */
 
 .pokemonTitle {
   color: #f22613;
   font-family: fantasy;
+  font-size: 40px;
   letter-spacing: 2px;
   text-shadow: #0d0d0d;
   padding-bottom: 20px;

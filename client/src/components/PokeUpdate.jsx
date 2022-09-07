@@ -127,9 +127,7 @@ const PokeUpdate = () => {
     <Fragment>
       {pokemon ? (
         <div className="bg-create">
-          <div className="reg-form">
-            <h1>Let's update your Pokemon</h1>
-          </div>
+          <h1>Let's update your Pokemon</h1>
           <div className="cancel-container">
             <Link className="Link" to={`/pokeDetails/${id}`}>
               <button className="cancel-button">CANCEL</button>
@@ -138,7 +136,7 @@ const PokeUpdate = () => {
           <div className="upmain">
             <form onSubmit={(e) => handleSubmit(e)}>
               <div className="upleft">
-                <h1 className="pokemonTitle">{pokemon.name}</h1>
+                <h4 className="pokemonTitle">{pokemon.name}</h4>
                 <div>
                   <label>Abilities </label>
                   <input
